@@ -42,6 +42,8 @@ those artifacts. Production geometry is rebuilt, not extracted from those cuts.
 
 ### IBM 1053
 
+![Blender render of the IBM 1053 console printer in its IBM 1130 arrangement](images/ibm1053-render.png)
+
 The printer-only assembly retains the sixteen data switches, three blue printer
 controls, position scale, clear formed cover, platen, knobs, and type element.
 Its elevated 1130 indicator display and lower keyboard are excluded. Refinement
@@ -56,6 +58,8 @@ were on the system’s large panel rather than the printer cover.
 
 ### IBM 2741
 
+![Blender render of the IBM 2741 APL terminal with loaded paper](images/ibm2741-render.png)
+
 The desktop APL terminal has a low rounded enclosure, sculpted keycaps with a
 shared print atlas, separate operator controls, exposed mechanism, and loaded
 paper. Reference comparisons corrected the earlier tall enclosure and oversized
@@ -64,6 +68,8 @@ The complete desk-terminal configuration in IBM's OEM manual is separate from
 this desktop model.
 
 ### IBM 5471
+
+![Blender render of the IBM 5471 System/3 printer-keyboard console](images/ibm5471-render.png)
 
 The System/3 console has its own rounded enclosure, keyboard, dark carrier scale,
 right-hand request keys and status windows, side platen knob, and clear paper
