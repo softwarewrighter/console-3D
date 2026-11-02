@@ -1,0 +1,6 @@
+## IBM 1053 in the photographed 1131 installation. Meters, front -Y.
+## Enclosure envelope is provisional; do not treat it as an IBM measurement.
+"bp:" u_se< "Bpy"
+l:s_cene := { z ->
+  (bp:p_iece "IBM 1053 console printer") c_at (("1053 lower chassis", 0.0 0.020 0.007, 0.560 0.220 0.014, 0.0 0.0 0.0, 0.035 0.040 0.045, 0.0) bp:b_ox 0) c_at "build_1053(width=0.560, depth=0.220)\nfinish('1053')\n"
+}

@@ -1,0 +1,25 @@
+{
+  "model": "1053",
+  "reference": "references/ibm1130-superset-reference.glb",
+  "reference_kind": "User-supplied textured reconstruction; geometric comparison aid, not dimensional authority",
+  "source_blender_printer_region": {
+    "min": [-0.395, -0.025, -0.130],
+    "max": [0.145, 0.225, 0.055],
+    "status": "Initial visually selected region; refine against coordinate renders before accepting ratios"
+  },
+  "alignment": {
+    "scale": 1.037037037037037,
+    "translation": [0.12962962962963, -0.103703703703704, 0.134814814814815],
+    "description": "Uniformly map source printer width 0.540 source units to provisional 0.560 m, center X and depth; printer base to Z=0. Full source remains intact."
+  },
+  "aim": [0.0, 0.0, 0.1],
+  "orthographic_scale": 0.74,
+  "views": {
+    "front": [0.0, -1.5, 0.1],
+    "left": [-0.9, -1.2, 0.58],
+    "right": [0.9, -1.2, 0.58],
+    "top": [0.0, 0.0, 1.6],
+    "rear": [0.0, 1.5, 0.45]
+  },
+  "budget": {"triangles": 25000, "mesh_nodes": 60, "glb_bytes": 716800}
+}

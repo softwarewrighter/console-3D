@@ -1,0 +1,65 @@
+{
+  "model": "5471",
+  "reference": "references/ibm5471-reference.glb",
+  "reference_kind": "User-supplied reconstruction with known underside anomalies; diagnostic body region excludes hanging skirt",
+  "source_blender_printer_region": {
+    "min": [
+      -0.501,
+      -0.425,
+      -0.13
+    ],
+    "max": [
+      0.501,
+      0.418,
+      0.276
+    ],
+    "status": "User explicitly identified underside artifacts; clip only diagnostic copy below source Z=-0.130. Original remains intact."
+  },
+  "alignment": {
+    "scale": 0.559105,
+    "translation": [
+      0,
+      0.001913,
+      0.07268365
+    ],
+    "description": "Uniform map of source full width to provisional 0.560 m; intended body bottom Z=-0.130 to floor; reconstructed hanging underside excluded only from diagnostic region."
+  },
+  "aim": [
+    0,
+    0,
+    0.1
+  ],
+  "orthographic_scale": 0.76,
+  "views": {
+    "front": [
+      0,
+      -1.5,
+      0.1
+    ],
+    "left": [
+      -0.9,
+      -1.2,
+      0.58
+    ],
+    "right": [
+      0.9,
+      -1.2,
+      0.58
+    ],
+    "top": [
+      0,
+      0,
+      1.6
+    ],
+    "rear": [
+      0,
+      1.5,
+      0.45
+    ]
+  },
+  "budget": {
+    "triangles": 25000,
+    "mesh_nodes": 90,
+    "glb_bytes": 716800
+  }
+}

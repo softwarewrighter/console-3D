@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>IBM Console Studies · 1053, 2741 & 5471</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script src="viewer-controls.js" defer></script>
+  <script src="preview.js" defer></script>
+</head>
+<body>
+<header><a class="wordmark" href="./">CONSOLE / 3D</a><span class="edition">IBM · SELECTRIC STUDIES</span><span class="build-label">FIRST MODELING PASS</span></header>
+<main>
+  <section class="intro"><div><p class="eyebrow">HARDWARE, RECONSTRUCTED</p><h1>Three machines.<br>One remarkable mechanism.</h1></div><p class="lede">Explore the 1053 console (used on IBM 1130/1800 systems), IBM 2741 APL terminal, and IBM 5471 System/3 console. Built in X_eTaL and Blender, guided by hardware photographs, IBM illustrations, and dense reference models.</p></section>
+  <p><a href="compare.html" style="color:var(--blue)">1053 comparison →</a> &nbsp; <a href="compare.html?model=2741" style="color:var(--blue)">2741 comparison →</a> &nbsp; <a href="compare.html?model=5471" style="color:var(--blue)">5471 comparison →</a></p>
+  <div class="model-tabs" role="group" aria-label="Choose a model"><button data-model="1053" class="selected" aria-pressed="true">01 <strong>IBM 1053</strong><span>Console printer</span></button><button data-model="2741" aria-pressed="false">02 <strong>IBM 2741</strong><span>APL terminal</span></button><button data-model="5471" aria-pressed="false">03 <strong>IBM 5471</strong><span>System/3 console</span></button></div>
+  <section class="inspection">
+    <div class="viewport">
+      <div class="viewport-label"><span id="model-title">IBM 1053</span><span id="status" role="status" aria-live="polite">Loading preview…</span></div>
+      <model-viewer id="mv" camera-controls environment-image="neutral" shadow-intensity="1" exposure="1" interaction-prompt="none" min-camera-orbit="auto 3deg 0.15m" max-camera-orbit="auto 175deg 3m" alt="Interactive reconstruction of an IBM console printer"></model-viewer>
+      <img id="still" hidden alt="Blender render of the selected IBM model">
+      <div id="views" class="views"><button data-preset="overview" class="active">Overview</button><button data-preset="front">Front</button><button data-preset="left">Left</button><button data-preset="right">Right</button><button data-preset="top">Top</button><button data-preset="detail">Detail</button></div>
+      <div class="mode-row"><div role="group" aria-label="Preview type"><button data-mode="3d" class="active" aria-pressed="true">Interactive 3D</button><button data-mode="render" aria-pressed="false">Blender render</button><button data-mode="reference" aria-pressed="false">Reference image</button></div><span>DRAG TO ORBIT · SCROLL TO ZOOM</span></div>
+    </div>
+    <aside>
+      <p class="eyebrow" id="model-number">STUDY 01 / CONSOLE PRINTER</p><h2 id="model-heading">IBM 1053</h2><p id="description"></p>
+      <div class="facts"><div><span>Meshes</span><strong id="mesh-count">—</strong></div><div><span>Envelope / mm</span><strong id="dimensions">—</strong></div><div><span>Scale evidence</span><strong>Provisional</strong></div></div>
+      <p class="accuracy" id="accuracy"></p>
+      <div class="tools" aria-label="Camera controls"><button data-action="zoom-in" aria-label="Zoom in">＋</button><button data-action="zoom-out" aria-label="Zoom out">−</button><button data-action="rotate">Resume rotation</button><button data-action="reset">Reset</button></div>
+      <details><summary>Keyboard controls</summary><p>W / S zoom · A / D or ← / → orbit · ↑ / ↓ elevation · I / K vertical pan · Space rotation · R reset.</p></details>
+      <div class="downloads"><a id="download-glb" href="1053/ibm1053.glb" download>Download GLB ↗</a><a id="download-blend" href="1053/ibm1053.blend" download>Blender scene ↗</a><a id="download-report" href="1053/report.json">Validation report ↗</a></div>
+    </aside>
+  </section>
+  <section class="evidence"><p class="eyebrow">REFERENCE → GEOMETRY → RENDER</p><h2>Made to be inspected.</h2><p>Each model includes front, left, right, top, and detail renders. The exported GLB is imported again to check component identities and overall bounds. Shell dimensions, small legends, and hidden fittings remain open refinement work.</p><p id="reference-credit"></p></section>
+</main>
+<footer><span>Michael A. Wright · 2026</span><span>X_eTaL → Blender → glTF</span></footer>
+</body>
+</html>

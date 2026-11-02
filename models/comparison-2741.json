@@ -1,0 +1,25 @@
+{
+  "model": "2741",
+  "reference": "references/ibm2741-reference.glb",
+  "reference_kind": "User-supplied dense terminal reconstruction; source dimensions unknown; paper loaded",
+  "source_blender_printer_region": {
+    "min": [-0.500302, -0.361903, -0.189908],
+    "max": [0.500839, 0.349347, 0.189114],
+    "status": "Complete terminal; no region cut or excluded assemblies"
+  },
+  "alignment": {
+    "scale": 0.571348,
+    "translation": [-0.0001533, 0.0035869, 0.1085031],
+    "description": "Uniform provisional alignment of full reference width to 0.572 m, XY centered, lowest base vertex to Z=0. No historical dimensions inferred from normalization."
+  },
+  "aim": [0, 0, 0.10],
+  "orthographic_scale": 0.74,
+  "views": {
+    "front": [0, -1.5, 0.1],
+    "left": [-0.9, -1.2, 0.58],
+    "right": [0.9, -1.2, 0.58],
+    "top": [0, 0, 1.6],
+    "rear": [0, 1.5, 0.45]
+  },
+  "budget": {"triangles": 25000, "mesh_nodes": 90, "glb_bytes": 716800}
+}

@@ -1,0 +1,5 @@
+## IBM 5471 System/3 printer-keyboard. Inferred envelope, clean lower enclosure.
+"bp:" u_se< "Bpy"
+l:s_cene := { z ->
+  (bp:p_iece "IBM 5471 System 3 console") c_at (("5471 lower chassis", 0.0 0.0 0.006, 0.540 0.460 0.012, 0.0 0.0 0.0, 0.035 0.040 0.045, 0.0) bp:b_ox 0) c_at "build_5471(width=0.540, depth=0.460)\nfinish('5471')\n"
+}
