@@ -31,10 +31,13 @@ view-compare:
     bash scripts/open_viewer.sh http://127.0.0.1:5803/compare.html
 
 serve:
-    python3 -m http.server 5803 --bind 127.0.0.1 --directory work/preview
+    python3 -m http.server 5803 --bind 0.0.0.0 --directory work/preview
 
 view:
     bash scripts/open_viewer.sh
 
+view-animate:
+    bash scripts/open_viewer.sh http://127.0.0.1:5803/animate.html?model=2741
+
 view-serve: viewer
-    python3 -m http.server 5803 --bind 127.0.0.1 --directory work/preview
+    python3 -m http.server 5803 --bind 0.0.0.0 --directory work/preview

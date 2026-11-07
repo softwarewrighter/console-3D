@@ -56,6 +56,7 @@ async function selectModel(id){
  document.querySelectorAll('[data-model]').forEach(b=>{b.classList.toggle('selected',b.dataset.model===id);b.setAttribute('aria-pressed',String(b.dataset.model===id));});
  for(const [selector,suffix] of [['#download-glb','.glb'],['#download-blend','.blend']])document.querySelector(selector).href=`${id}/ibm${id}${suffix}`;
  document.querySelector('#download-report').href=`${id}/report.json`;
+ document.querySelector('#animate-mechanism').href=`animate.html?model=${id}`;
  document.querySelector('#mesh-count').textContent='—';document.querySelector('#dimensions').textContent='—';
  controls?.dispose();
  updateMode();

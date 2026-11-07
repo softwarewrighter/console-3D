@@ -156,7 +156,9 @@ def mechanism(width, y, z, material, carrier_x=-.055, agile=False, carrier_y=Non
         cyl(f'paper bail roller {x}', (x, y-.004, z+.023), .006, .014, RUBBER)
     for offset in (-.002, -.025):
         cyl(f'carrier guide rail {offset}', (0, carrier_y+offset, z-.027), .0035, span-.015, CHROME)
+    carrier_start=len(PARTS)
     box('type element carrier', (carrier_x, carrier_y-.007, z-.018), (.057, .043, .02), BLACK)
+    element_start=len(PARTS)
     bpy.ops.mesh.primitive_uv_sphere_add(segments=32, ring_count=16, radius=1, location=(carrier_x, carrier_y, z+.002))
     ball = bpy.context.object
     ball.name = 'Selectric type element'
@@ -170,6 +172,20 @@ def mechanism(width, y, z, material, carrier_x=-.055, agile=False, carrier_y=Non
             r = .015*math.cos((row-1)*.4)
             o = box(f'type slug {row}-{col}', (carrier_x+r*math.cos(a), carrier_y+r*math.sin(a), z+(row-1)*.005), (.002, .002, .0025), BLACK, .0002)
             o.rotation_euler.z = a
+    # Keep motion pivots independent of static batching. Rest geometry is
+    # unchanged; tilt and spin share the element center, carrier translates X.
+    carrier=bpy.data.objects.new('selectric_carrier',None)
+    tilt=bpy.data.objects.new('selectric_tilt',None)
+    spin=bpy.data.objects.new('selectric_spin',None)
+    for node in (carrier,tilt,spin):bpy.context.collection.objects.link(node)
+    carrier.location=(carrier_x,carrier_y,z+.002)
+    tilt.parent=carrier;spin.parent=tilt
+    bpy.context.view_layer.update()
+    for index,o in enumerate(PARTS[carrier_start:],start=carrier_start):
+        world=o.matrix_world.copy()
+        o.parent=spin if index>=element_start else carrier
+        o.matrix_world=world
+    carrier['mechanism_role']='carrier';tilt['mechanism_role']='tilt';spin['mechanism_role']='spin'
 
 
 def ruler(y, z, width=.43, front=True):
@@ -430,7 +446,11 @@ def compact_1053(root):
         evaluated=bpy.data.meshes.new_from_object(o.evaluated_get(deps),preserve_all_data_layers=True,depsgraph=deps)
         o.modifiers.clear();o.data=evaluated
         match=re.match(r'data bit (\d\d)',o.name)
-        if match:
+        if o.parent and o.parent.name=='selectric_spin':
+            key='type element assembly'
+        elif o.parent and o.parent.name=='selectric_carrier':
+            key='moving carrier assembly'
+        elif match:
             key='data bit '+match.group(1)+' actuator'
         elif o.get('assembly')=='removable printer hood':
             key='removable acrylic hood'
@@ -442,14 +462,15 @@ def compact_1053(root):
             key='tab set clear control'
         else:
             key='static '+o.data.materials[0].name
-        groups[key].append(o)
-    for key,parts in groups.items():
+        groups[(key,o.parent.name if o.parent else '')].append(o)
+    for (key,_),parts in groups.items():
+        parent=parts[0].parent
         names=[o.name for o in parts]
         bpy.ops.object.select_all(action='DESELECT')
         for o in parts:o.select_set(True)
         bpy.context.view_layer.objects.active=parts[0]
         if len(parts)>1:bpy.ops.object.join()
-        o=bpy.context.view_layer.objects.active;o.name=key;o.parent=root
+        o=bpy.context.view_layer.objects.active;o.name=key;o.parent=parent
         o['semantic_parts']=json.dumps(names)
     return len(objects)
 
@@ -458,7 +479,8 @@ def finish(model):
     from datetime import datetime, timezone
     root = bpy.data.objects.get({'1053':'IBM 1053 console printer','2741':'IBM 2741 desktop APL terminal','5471':'IBM 5471 System 3 console'}[model])
     for o in PARTS:
-        o.parent = root
+        if o.parent is None:o.parent = root
+    carrier=bpy.data.objects['selectric_carrier'];carrier.parent=root
     bpy.context.view_layer.update()
     logical_count=len([o for o in bpy.context.scene.objects if o.type=='MESH'])
     if os.environ.get('COMPACT_'+model,'1')=='1':
@@ -471,11 +493,15 @@ def finish(model):
     scene['dimension_status'] = 'Provisional photographic proportions. 2741 OEM desk envelope does not constrain desktop shell.'
     bpy.ops.object.select_all(action='DESELECT')
     root.select_set(True)
+    for o in root.children_recursive:o.select_set(True)
     for o in hardware:
         o['semantic_name'] = o.name
         o.select_set(True)
     bpy.context.view_layer.objects.active = root
     stem = 'ibm'+model
+    travel_columns=125 if model=='5471' else 130
+    mechanism_config={'version':1,'model':model,'nodes':{'carrier':'selectric_carrier','tilt':'selectric_tilt','spin':'selectric_spin'},'pitch_m':.00254,'max_column':travel_columns,'left_x_m':-travel_columns*.00254/2,'rest_x_m':float(carrier.location.x),'max_tilt_deg':20,'coordinate_system':'glTF Y-up; carrier +X, tilt local X, spin local Y','accuracy':'10 CPI travel; illustrative tilt range and timing, not verified Selectric character coding'}
+    (OUTPUT/'mechanism.json').write_text(json.dumps(mechanism_config,indent=2)+'\n')
     bpy.ops.export_scene.gltf(filepath=str(OUTPUT/(stem+'.glb')), use_selection=True, export_extras=True)
     import struct
     glb_data=(OUTPUT/(stem+'.glb')).read_bytes()
@@ -489,6 +515,7 @@ def finish(model):
     bpy.context.window.scene = test_scene
     bpy.ops.import_scene.gltf(filepath=str(OUTPUT/(stem+'.glb')))
     imported = [o for o in test_scene.objects if o.type == 'MESH']
+    assert set(mechanism_config['nodes'].values()) <= {o.name.removesuffix('.001') for o in test_scene.objects}, 'Motion pivots lost on export'
     assert {o.name for o in hardware} == {o.get('semantic_name') for o in imported}, 'GLB semantic identities changed'
     bpy.context.view_layer.update()
     # Import applies glTF's axis conversion back to Blender coordinates.

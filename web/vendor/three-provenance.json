@@ -1,0 +1,8 @@
+{
+  "package": "three",
+  "version": "0.170.0",
+  "source": "https://unpkg.com/three@0.170.0/",
+  "license": "MIT; see three-LICENSE",
+  "files": ["build/three.module.js", "examples/jsm/loaders/GLTFLoader.js", "examples/jsm/controls/OrbitControls.js", "examples/jsm/utils/BufferGeometryUtils.js", "examples/jsm/environments/RoomEnvironment.js"],
+  "purpose": "Public node-transform API for programmable mechanism viewer"
+}

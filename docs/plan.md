@@ -42,6 +42,15 @@ reference viewer, not in the compact production model. Keep the 2741 separate.
 - [x] Accept the 5471 after matched-view review and check all three model selectors.
 - [x] Verify paired-view rotation for all three references and publish final results.
 
+## Program-controlled mechanism
+
+- [x] Separate carrier, tilt, and spin pivots without changing rest geometry.
+- [x] Preserve moving parents during static mesh batching and GLB export.
+- [x] Implement a shared queued command API, cancellation, and travel limits.
+- [x] Add manual controls, editable programs, and a following close-up camera.
+- [x] Validate the 2741 first, then build the 1053 and 5471.
+- [x] Complete browser motion and model-switching checks for all three assets.
+
 ## Initial measurable targets
 
 1. Match printer height/width and shoulder depth/width ratios within roughly 5%

@@ -17,6 +17,7 @@ def main():
     for f in (ROOT/'web').iterdir():
         if f.is_file():
             shutil.copyfile(f, OUT/f.name)
+    if (ROOT/'web/vendor').is_dir():shutil.copytree(ROOT/'web/vendor',OUT/'vendor',dirs_exist_ok=True)
     shutil.copyfile(SHARED/'viewer-controls.js', OUT/'viewer-controls.js')
     shutil.copytree(SHARED/'vendor', OUT/'vendor', dirs_exist_ok=True)
     refs = OUT/'references'
@@ -37,6 +38,7 @@ def main():
     if not available:
         raise SystemExit('No completed models; run just render first.')
     (OUT/'models.json').write_text(json.dumps(available)+'\n')
+    (OUT/'mechanisms.json').write_text(json.dumps([m for m in available if (OUT/m/'mechanism.json').is_file()])+'\n')
     (OUT/'reference').mkdir(exist_ok=True)
     for reference in (ROOT/'references').glob('*.glb'):
         shutil.copyfile(reference,OUT/'reference'/reference.name)

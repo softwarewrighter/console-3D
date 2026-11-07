@@ -32,13 +32,27 @@ full reference console or its diagnostic printer region. The 5471 viewer can
 show the original underside anomalies or the diagnostic body region excluding
 those artifacts. Production geometry is rebuilt, not extracted from those cuts.
 
+## Animate the shared mechanism
+
+Open [program-controlled motion](http://127.0.0.1:5803/animate.html?model=2741)
+for the 2741, 1053, or 5471. Apply tilt and rotation, advance, backspace, or return
+the carrier using buttons, editable JSON commands, or `window.selectric`.
+See [docs/animation.md](docs/animation.md) for the API, rig hierarchy, and limits.
+
+```js
+await selectric.select({tilt: 12, rotate: 65});
+await selectric.advance(5);
+await selectric.backspace(2);
+await selectric.carriageReturn();
+```
+
 ## Current models
 
 | Model | Production meshes | Triangles | GLB | Principal evidence |
 |---|---:|---:|---:|---|
-| IBM 1053 / 1131 installation | 31 | 12,598 | 595 KiB | Two original console photographs and supplied full-console GLB |
-| IBM 2741 APL terminal | 12 | 12,666 | 593 KiB | Museum photograph and supplied loaded-paper GLB |
-| IBM 5471 System/3 console | 12 | 11,816 | 553 KiB | Supplied GLB plus IBM Components Reference Figures 8-1 and 8-2 |
+| IBM 1053 / 1131 installation | 33 | 12,598 | 604 KiB | Two original console photographs and supplied full-console GLB |
+| IBM 2741 APL terminal | 14 | 12,666 | 602 KiB | Museum photograph and supplied loaded-paper GLB |
+| IBM 5471 System/3 console | 14 | 11,816 | 561 KiB | Supplied GLB plus IBM Components Reference Figures 8-1 and 8-2 |
 
 ### IBM 1053
 

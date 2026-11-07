@@ -31,8 +31,10 @@ For each change:
 - 5471: controls follow IBM's manual rather than illegible generated texture.
   The known hanging underside is intentionally excluded; rear details, exact
   key spacing, paper-guide curvature, and physical dimensions remain provisional.
-- Mechanical motion: no cover or carrier action is claimed until its pivot,
-  travel, and component hierarchy have been checked.
+- Mechanical motion: carrier travel, element tilt/spin, backspace, and return
+  are implemented through separate pivots and checked in the browser. Exact
+  character-code mapping, print impact and paper feed remain future work;
+  see [animation.md](animation.md).
 
 Build outputs are promoted only after complete renders and GLB bounds/identity
 checks. Failed candidates and prior outputs remain under `work/ibm*/` for review.

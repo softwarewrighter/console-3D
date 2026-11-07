@@ -46,7 +46,7 @@ def main():
         print('Building IBM '+model+'; log: '+str(candidate/'blender.log'), flush=True)
         with (candidate/'blender.log').open('w') as log:
             subprocess.run(cmd, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=a.timeout)
-        expected = ['ibm'+model+suffix for suffix in ('.blend','.glb','.obj','.mtl')]+[v+'.png' for v in ('overview','front','left','right','top','detail')]+['report.json']
+        expected = ['ibm'+model+suffix for suffix in ('.blend','.glb','.obj','.mtl')]+[v+'.png' for v in ('overview','front','left','right','top','detail')]+['report.json','mechanism.json']
         for name in expected:
             f = candidate/name
             if not f.is_file() or f.stat().st_size == 0:
