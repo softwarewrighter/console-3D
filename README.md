@@ -1,8 +1,10 @@
-# IBM Console Studies — X_eTaL & Blender
+# Console Studies — IBM Selectric & TRS-80
 
 **Three machines. One remarkable mechanism.** Compact procedural models of the
 **IBM 1053 console (used on IBM 1130/1800 systems)**, **IBM 2741 APL terminal**, and **IBM 5471 System/3
-printer-keyboard**, built around shared Selectric construction helpers.
+printer-keyboard**, built around shared Selectric construction helpers. A fourth
+study reconstructs the **TRS-80 Model I** keyboard/CPU, expansion interface,
+CRT monitor, and upright mini-disk drive.
 
 The models are authored through X_eTaL's Blender extension and detailed Python
 construction helpers. They export Blender, glTF, OBJ, and matched validation
@@ -16,7 +18,9 @@ just view-serve     # serve existing output at http://127.0.0.1:5803/
 just view           # open the configured interactive Chromium window
 ```
 
-- [Three-model preview](http://127.0.0.1:5803/)
+- [Four-model preview](http://127.0.0.1:5803/)
+- [TRS-80 Model I preview](http://127.0.0.1:5803/?model=trs80)
+- [TRS-80 / supplied GLB comparison](http://127.0.0.1:5803/compare.html?model=trs80)
 - [1053 / full console comparison](http://127.0.0.1:5803/compare.html)
 - [2741 comparison](http://127.0.0.1:5803/compare.html?model=2741)
 - [5471 comparison](http://127.0.0.1:5803/compare.html?model=5471)
@@ -53,6 +57,7 @@ await selectric.carriageReturn();
 | IBM 1053 / 1131 installation | 33 | 12,598 | 604 KiB | Two original console photographs and supplied full-console GLB |
 | IBM 2741 APL terminal | 14 | 12,666 | 602 KiB | Museum photograph and supplied loaded-paper GLB |
 | IBM 5471 System/3 console | 14 | 11,816 | 561 KiB | Supplied GLB plus IBM Components Reference Figures 8-1 and 8-2 |
+| TRS-80 Model I system | 34 | 14,862 | 695 KiB | Supplied photograph and dense GLB, Museums Victoria component dimensions |
 
 ### IBM 1053
 
@@ -92,6 +97,27 @@ illustration. The dense reference's hanging underside is not modeled as hardware
 The 44 graphic-key positions and separate controls follow Figure 8-2; the 2741's
 APL keyboard is not reused as a 5471 keyboard.
 
+### TRS-80 Model I
+
+![Blender render of the TRS-80 Model I keyboard CPU, expansion interface, CRT display, and disk drive](images/trs80-render.png)
+
+Four separate assemblies reproduce the supplied silver-and-black desktop system.
+The model includes a sloping CPU case, 53 sculpted keys with a shared legend atlas,
+expansion-interface covers and vents, deep rounded CRT bezel and curved blank
+screen, monitor controls, upright disk enclosure and latch, ribbon cable, and
+signal cables. The user's 5471 connection belongs at the expansion interface;
+the unpictured adapter and internal circuitry are not modeled.
+
+Keyboard and monitor envelopes use museum dimensions. Expansion shelf geometry,
+exact key spacing, drive fittings, and unseen rear details remain provisional.
+The monitor now has a rounded, sloping roof derived from the dense reference.
+The front and overview presentation renders use perspective cameras; matched
+orthographic views are retained for geometry comparison.
+See [TRS-80 evidence and refinement notes](docs/trs80.md). The supplied 286,564-triangle reference is used locally in the paired comparison
+viewer and is deliberately excluded from Git. To reproduce that optional
+comparison, place your copy at `references/trs80-reference.glb`. The procedural
+model builds without it.
+
 Physical shell dimensions, some small details, and unseen rear fittings remain
 provisional. Dense reconstructions are comparison aids rather than measurement
 authorities. See [reference provenance](references/README.md) and
@@ -105,9 +131,10 @@ if that checkout is elsewhere.
 
 ```sh
 just setup          # local ./X_eTaL-extensions and its pinned X_eTaL runtime
-just render-gpu     # all three models with OptiX
-just render         # all three models with CPU
+just render-gpu     # all four models with OptiX
+just render         # all four models with CPU
 just render-1053
+just render-trs80
 just render-2741
 just render-5471
 just viewer         # rebuild preview from existing passing outputs

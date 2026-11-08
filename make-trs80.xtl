@@ -1,0 +1,5 @@
+"bl:" u_se< "Blender"
+"bp:" u_se< "Bpy"
+"model:" u_se< "Trs80"
+code := bp:head c_at (bl:r_ead "scripts/console_scene.py") c_at (bl:r_ead "scripts/trs80_scene.py") c_at (model:s_cene 0)
+"work/trs80/scene.py" bl:w_rite! code

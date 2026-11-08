@@ -31,6 +31,10 @@ For each change:
 - 5471: controls follow IBM's manual rather than illegible generated texture.
   The known hanging underside is intentionally excluded; rear details, exact
   key spacing, paper-guide curvature, and physical dimensions remain provisional.
+- TRS-80: first four-unit desktop reconstruction is accepted after six production
+  views and five reference comparisons. Keyboard width and monitor width are
+  museum constrained; expansion shelf profile, precise key spacing, disk latch,
+  monitor rear details, and cable routing remain provisional. See [trs80.md](trs80.md).
 - Mechanical motion: carrier travel, element tilt/spin, backspace, and return
   are implemented through separate pivots and checked in the browser. Exact
   character-code mapping, print impact and paper feed remain future work;

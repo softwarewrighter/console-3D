@@ -28,7 +28,7 @@ def main():
         api('POST',prefix+'/url',{'url':'http://127.0.0.1:5803/compare.html?model='+MODEL})
         wait("return document.querySelector('#compact').loaded && document.querySelector('#reference').loaded")
         shot('full-reference')
-        if MODEL!='2741':
+        if MODEL not in ('2741','trs80'):
             js("document.querySelector('#focus').click()")
             wait("return document.querySelector('#reference').loaded && document.querySelector('#reference').src.includes('region')")
         results=[]

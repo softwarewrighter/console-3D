@@ -1,0 +1,5 @@
+## Photo-led TRS-80 Model I desktop system; component dimensions in trs80_scene.py.
+"bp:" u_se< "Bpy"
+l:s_cene := { z ->
+  (bp:p_iece "TRS-80 Model I desktop system") c_at "build_trs80()\nfinish('trs80')\n"
+}

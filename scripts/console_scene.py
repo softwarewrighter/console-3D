@@ -477,10 +477,11 @@ def compact_1053(root):
 
 def finish(model):
     from datetime import datetime, timezone
-    root = bpy.data.objects.get({'1053':'IBM 1053 console printer','2741':'IBM 2741 desktop APL terminal','5471':'IBM 5471 System 3 console'}[model])
+    root = bpy.data.objects.get({'1053':'IBM 1053 console printer','2741':'IBM 2741 desktop APL terminal','5471':'IBM 5471 System 3 console','trs80':'TRS-80 Model I desktop system'}[model])
     for o in PARTS:
         if o.parent is None:o.parent = root
-    carrier=bpy.data.objects['selectric_carrier'];carrier.parent=root
+    carrier=bpy.data.objects.get('selectric_carrier')
+    if carrier:carrier.parent=root
     bpy.context.view_layer.update()
     logical_count=len([o for o in bpy.context.scene.objects if o.type=='MESH'])
     if os.environ.get('COMPACT_'+model,'1')=='1':
@@ -498,10 +499,12 @@ def finish(model):
         o['semantic_name'] = o.name
         o.select_set(True)
     bpy.context.view_layer.objects.active = root
-    stem = 'ibm'+model
-    travel_columns=125 if model=='5471' else 130
-    mechanism_config={'version':1,'model':model,'nodes':{'carrier':'selectric_carrier','tilt':'selectric_tilt','spin':'selectric_spin'},'pitch_m':.00254,'max_column':travel_columns,'left_x_m':-travel_columns*.00254/2,'rest_x_m':float(carrier.location.x),'max_tilt_deg':20,'coordinate_system':'glTF Y-up; carrier +X, tilt local X, spin local Y','accuracy':'10 CPI travel; illustrative tilt range and timing, not verified Selectric character coding'}
-    (OUTPUT/'mechanism.json').write_text(json.dumps(mechanism_config,indent=2)+'\n')
+    stem = 'trs80' if model=='trs80' else 'ibm'+model
+    mechanism_config=None
+    if carrier:
+        travel_columns=125 if model=='5471' else 130
+        mechanism_config={'version':1,'model':model,'nodes':{'carrier':'selectric_carrier','tilt':'selectric_tilt','spin':'selectric_spin'},'pitch_m':.00254,'max_column':travel_columns,'left_x_m':-travel_columns*.00254/2,'rest_x_m':float(carrier.location.x),'max_tilt_deg':20,'coordinate_system':'glTF Y-up; carrier +X, tilt local X, spin local Y','accuracy':'10 CPI travel; illustrative tilt range and timing, not verified Selectric character coding'}
+        (OUTPUT/'mechanism.json').write_text(json.dumps(mechanism_config,indent=2)+'\n')
     bpy.ops.export_scene.gltf(filepath=str(OUTPUT/(stem+'.glb')), use_selection=True, export_extras=True)
     import struct
     glb_data=(OUTPUT/(stem+'.glb')).read_bytes()
@@ -515,7 +518,7 @@ def finish(model):
     bpy.context.window.scene = test_scene
     bpy.ops.import_scene.gltf(filepath=str(OUTPUT/(stem+'.glb')))
     imported = [o for o in test_scene.objects if o.type == 'MESH']
-    assert set(mechanism_config['nodes'].values()) <= {o.name.removesuffix('.001') for o in test_scene.objects}, 'Motion pivots lost on export'
+    if mechanism_config:assert set(mechanism_config['nodes'].values()) <= {o.name.removesuffix('.001') for o in test_scene.objects}, 'Motion pivots lost on export'
     assert {o.name for o in hardware} == {o.get('semantic_name') for o in imported}, 'GLB semantic identities changed'
     bpy.context.view_layer.update()
     # Import applies glTF's axis conversion back to Blender coordinates.
@@ -555,8 +558,13 @@ def finish(model):
     views = [('overview',(.70,-.9,.68),(0,0,.12),.86),('front',(0,-1,.38),(0,0,.12),.72),('left',(-.75,-.8,.52),(0,0,.12),.82),('right',(.75,-.8,.52),(0,0,.12),.82),('top',(0,-.05,1.2),(0,0,.10),.70),('detail',(.23,-.50,.48),(0,-.07,.14),.48)]
     if model == '2741':
         views[0] = ('overview',(.70,-.9,.74),(0,0,.10),.90)
+    if model=='trs80':
+        scene['dimension_status']='Keyboard 424 x 205 x 85 mm and monitor 400 x 310 x 280 mm constrained by Museums Victoria HT1839; photo-led expansion fascia and upright disk orientation, rear fittings inferred.'
+        views=[('overview',(.85,-1.30,.91),(.035,-.015,.205),.92),('front',(.035,-1.4,.68),(.035,-.015,.205),.82),('left',(-.9,-1.2,.8),(.035,-.015,.205),.94),('right',(.9,-1.2,.8),(.035,-.015,.205),.94),('top',(.035,-.015,1.5),(.035,-.015,0),.92),('detail',(.40,-.72,.66),(.05,-.20,.065),.53)]
+    if model=='trs80':views += [('perspective',(.85,-1.30,.80),(.035,-.015,.190),.92),('front-perspective',(.035,-1.30,.55),(.035,-.015,.190),.82)]
     for name, loc, aim, scale in views:
         data = bpy.data.cameras.new(name); data.type = 'ORTHO'; data.ortho_scale = scale
+        if name in ('perspective','front-perspective'):data.type='PERSP';data.lens=58 if name=='perspective' else 60;data.sensor_width=36
         cam = bpy.data.objects.new('camera '+name,data); scene.collection.objects.link(cam); cam.location = loc
         cam.rotation_euler = (Vector(aim)-cam.location).to_track_quat('-Z','Y').to_euler()
         scene.camera = cam
@@ -567,5 +575,7 @@ def finish(model):
     bpy.ops.file.pack_all()
     bpy.ops.wm.save_as_mainfile(filepath=str(OUTPUT/(stem+'.blend')))
     report = {'model':model,'generated_utc':datetime.now(timezone.utc).isoformat(),'blender':bpy.app.version_string,'device':device,'mesh_count':len(hardware),'logical_component_count':logical_count,'triangle_count':triangle_count,'draw_calls':draw_calls,'glb_bytes':len(glb_data),'bounds_m':bounds,'dimensions_m':[b-a for a,b in bounds],'glb_round_trip':'mesh names and bounds passed','dimension_status':scene['dimension_status'],'objects':sorted(o.name for o in hardware),'remaining_mismatches':['Absolute shell dimensions inferred','Small legends and rear fittings provisional','2741 desk configuration not modeled; photographed desktop unit targeted']}
+    if model=='trs80':
+        report['dimension_status']=scene['dimension_status'];report['remaining_mismatches']=['Expansion-interface front height matched to supplied photo; museum lists a different overall height','Disk enclosure inferred from photo and museum unit rotated upright','Rear monitor controls and cable routes inferred','CRT coating and fine wear remain approximate'];report['reference']='https://vintagecomputer.com/tandy-trs-80-model-i.html'
     (OUTPUT/'report.json').write_text(json.dumps(report,indent=2)+'\n')
     print('CONSOLE_BUILD_COMPLETE',model)

@@ -1,7 +1,7 @@
 'use strict';
 const compact=document.querySelector('#compact'),reference=document.querySelector('#reference');
 const requested=new URLSearchParams(location.search).get('model');
-const model=['2741','5471'].includes(requested)?requested:'1053';
+const model=['2741','5471','trs80'].includes(requested)?requested:'1053';
 const folder=model==='1053'?'comparison':'comparison-'+model;
 const views={overview:'38deg 67deg 1m',front:'0deg 90deg 1m',left:'-40deg 69deg 1m',right:'40deg 69deg 1m',top:'0deg 3deg 1m',rear:'180deg 75deg 1m'};
 let controls,focus=model==='2741',loaded=new Set();
@@ -23,9 +23,21 @@ if(model==='5471'){
  document.querySelector('#focus').textContent='Body comparison (artifacts excluded)';
  document.querySelector('.evidence p:not(.eyebrow)').textContent='The diagnostic reference region excludes the known hanging underside. The compact model uses a clean, rounded case like the 2741 and IBM’s 5471 illustration. Control legends follow IBM’s System/3 Components Reference, Figures 8-1 and 8-2.';
 }
+if(model==='trs80'){
+ for(const mv of [compact,reference]){mv.setAttribute('min-camera-orbit','auto 3deg 0.15m');mv.setAttribute('max-camera-orbit','auto 175deg 6m');}
+ compact.alt='Compact TRS-80 Model I desktop system';reference.alt='Supplied dense TRS-80 Model I reference';
+ document.title='TRS-80 Model I · Reference comparison';
+ document.querySelector('.comparison-head p:not(.eyebrow)').textContent='The compact four-unit Model I system beside the supplied dense reconstruction. Both cameras orbit together. The original photo and museum dimensions guide the procedural model; the dense reconstruction has approximate stack proportions and stray rear cable geometry.';
+ document.querySelector('.study:nth-child(2) h2').textContent='Compact TRS-80 Model I · latest candidate';
+ document.querySelector('#reference-stats').textContent='One textured mesh · 286,564 triangles · 14 MB original';
+ document.querySelector('#focus').hidden=true;document.querySelector('#full').textContent='Complete reference system';
+ document.querySelector('.evidence p:not(.eyebrow)').textContent='The complete reference is scaled uniformly to the monitor width. Differences in vertical stacking are preserved, rather than stretching the reference into agreement. Review silhouette, spacing, CRT, keys, and disk enclosure in each view.';
+ for(const key of Object.keys(views))views[key]=views[key].replace('1m','1.75m');
+}
+const target=model==='trs80'?'0.035m 0.205m 0.015m':'0m 0.10m 0m';
 document.querySelectorAll('a[href^="comparison/"]').forEach(a=>a.href=a.getAttribute('href').replace('comparison/',folder+'/'));
 document.querySelector('.sheets img').src=folder+'/compare-front.png';
-document.querySelector('a[download]').href='reference/'+(model==='1053'?'ibm1130-superset-reference.glb':'ibm'+model+'-reference.glb');
+document.querySelector('a[download]').href='reference/'+(model==='1053'?'ibm1130-superset-reference.glb':(model==='trs80'?'trs80-reference.glb':'ibm'+model+'-reference.glb'));
 function synchronize(from,to){
  const o=from.getCameraOrbit(),t=from.getCameraTarget();
  const ratio=focus||model!=='1053'?1:1.65;
@@ -35,17 +47,17 @@ function synchronize(from,to){
  to.jumpCameraToGoal();
 }
 function view(name){
- controls.setView(views[name],'0m 0.10m 0m');compact.jumpCameraToGoal();synchronize(compact,reference);
+ controls.setView(views[name],target);compact.jumpCameraToGoal();synchronize(compact,reference);
  document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
 }
 function mode(isFocus){
  focus=isFocus||model==='2741';reference.src=folder+'/'+(focus&&model!=='2741'?'reference-region.glb':'reference-aligned.glb');
- document.querySelector('#reference-title').textContent=model==='2741'?'Supplied reference · complete IBM 2741':model==='5471'?(focus?'Reference · underside artifacts excluded':'Supplied reference · underside artifacts retained'):focus?'Reference · diagnostic printer region':'Supplied reference · full console';
+ document.querySelector('#reference-title').textContent=model==='trs80'?'Supplied reference · complete TRS-80 Model I':model==='2741'?'Supplied reference · complete IBM 2741':model==='5471'?(focus?'Reference · underside artifacts excluded':'Supplied reference · underside artifacts retained'):focus?'Reference · diagnostic printer region':'Supplied reference · full console';
  document.querySelector('#full').classList.toggle('active',!focus||model==='2741');document.querySelector('#focus').classList.toggle('active',focus);
  view('overview');
 }
 customElements.whenDefined('model-viewer').then(()=>{
- controls=ModelControls.attach(compact,{orbit:views.overview,target:'0m 0.10m 0m',min:.2,max:4,pan:.02,rotateButton:document.querySelector('[data-action="rotate"]')});
+ controls=ModelControls.attach(compact,{orbit:views.overview,target:target,min:.2,max:4,pan:.02,rotateButton:document.querySelector('[data-action="rotate"]')});
  compact.addEventListener('camera-change',()=>synchronize(compact,reference));
  reference.addEventListener('camera-change',e=>{if(e.detail.source==='user-interaction')synchronize(reference,compact);});
  for(const mv of [compact,reference]){
@@ -55,6 +67,6 @@ customElements.whenDefined('model-viewer').then(()=>{
  document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
  document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{controls.actions[b.dataset.action]();compact.jumpCameraToGoal();synchronize(compact,reference);});
  document.querySelector('#full').onclick=()=>mode(false);document.querySelector('#focus').onclick=()=>mode(true);
- compact.src=`${model}/ibm${model}.glb`;mode(false);
+ compact.src=`${model}/${model==='trs80'?'trs80':'ibm'+model}.glb`;mode(false);
  fetch(`${model}/report.json`).then(r=>r.json()).then(r=>document.querySelector('#compact-stats').textContent=`${r.mesh_count} meshes · ${r.triangle_count?.toLocaleString()||'see report'} triangles · ${r.glb_bytes?(r.glb_bytes/1024).toFixed(0)+' KiB':'see report for size'}`);
 });

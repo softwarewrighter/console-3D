@@ -11,10 +11,10 @@ ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--candidate',type=Path,default=ROOT/'work/ibm1053/out/ibm1053.glb')
 p.add_argument('--label',default='candidate')
-p.add_argument('--model',choices=['1053','2741','5471'],default='1053')
+p.add_argument('--model',choices=['1053','2741','5471','trs80'],default='1053')
 a=p.parse_args()
 if a.model!='1053' and a.candidate==ROOT/'work/ibm1053/out/ibm1053.glb':
-    a.candidate=ROOT/'work'/('ibm'+a.model)/'out'/('ibm'+a.model+'.glb')
+    a.candidate=ROOT/'work'/('trs80' if a.model=='trs80' else 'ibm'+a.model)/'out'/('trs80.glb' if a.model=='trs80' else 'ibm'+a.model+'.glb')
 config=ROOT/'models'/('comparison-'+a.model+'.json' if a.model!='1053' else 'comparison.json')
 out=ROOT/'work/comparisons'/(datetime.now().strftime('%Y%m%d-%H%M%S')+'-'+a.label)
 out.mkdir(parents=True)

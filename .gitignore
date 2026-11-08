@@ -2,3 +2,6 @@
 /X_eTaL-extensions/
 __pycache__/
 *.pyc
+
+# User-supplied dense TRS-80 reference stays local.
+/references/trs80-reference.glb

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble the three-model preview and paired reference comparisons."""
+"""Assemble the four-model preview and paired reference comparisons."""
 import json
 from pathlib import Path
 import shutil
@@ -25,8 +25,8 @@ def main():
     for f in (ROOT/'references').iterdir():
         if f.suffix in ('.jpg','.png'):shutil.copyfile(f, refs/f.name)
     available = []
-    for model in ('1053', '2741', '5471'):
-        source = ROOT/'work'/('ibm'+model)/'out'
+    for model in ('1053', '2741', '5471', 'trs80'):
+        source = ROOT/'work'/('trs80' if model=='trs80' else 'ibm'+model)/'out'
         if not (source/'report.json').exists():
             continue
         target = OUT/model
@@ -34,6 +34,9 @@ def main():
         for f in source.iterdir():
             if f.suffix in ('.glb','.blend','.obj','.mtl','.png','.json'):
                 shutil.copyfile(f, target/f.name)
+        if model=='trs80' and (source/'front-perspective.png').exists():
+            shutil.copyfile(source/'front-perspective.png',OUT/'trs80-front.png')
+            shutil.copyfile(source/'perspective.png',OUT/'trs80-progress.png')
         available.append(model)
     if not available:
         raise SystemExit('No completed models; run just render first.')

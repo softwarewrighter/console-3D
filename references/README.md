@@ -57,3 +57,9 @@ photos and represent operating state rather than fixed enclosure geometry.
 User clarification: the 1053 was used on IBM 1130/1800 systems. The 1130 placed
 its toggle switches on the printer front cover; the 1800 placed them on its large
 system panel. The current model represents the 1130 installation.
+
+## TRS-80 Model I
+
+`trs80-model-i.jpg` is the unmodified photograph from [Vintage Computer](https://vintagecomputer.com/tandy-trs-80-model-i.html), downloaded 2026-11-08. Photographer and license are not established; it is retained as user-requested modeling evidence. The depicted arrangement, museum measurements, uncertainties, and first-pass acceptance criteria are recorded in [../docs/trs80.md](../docs/trs80.md).
+
+`trs80-reference.glb` is ignored by Git and remains local. It preserves the user-supplied `/home/mike/Downloads/sample_2026-11-08T211606.306.glb` unchanged (286,564 triangles, one mesh). Its reconstruction provenance beyond the supplied file is unknown. Lucy CPU import/render/export diagnostic passed in `work/trs80-reference-check/20261108-121441/1/`; normalization applies only to that diagnostic. See `models/comparison-trs80.json` for the separate physical-scale comparison transform.

@@ -1,0 +1,65 @@
+{
+  "model": "trs80",
+  "reference": "references/trs80-reference.glb",
+  "reference_kind": "User-supplied dense reconstruction; photo and museum dimensions remain primary evidence",
+  "source_blender_printer_region": {
+    "min": [
+      -1,
+      -1,
+      -1
+    ],
+    "max": [
+      1,
+      1,
+      1
+    ],
+    "status": "Complete reference; no cropping. Stray rear cables affect depth bounds."
+  },
+  "alignment": {
+    "scale": 0.79,
+    "translation": [
+      0.0597,
+      0.063,
+      0.212484
+    ],
+    "description": "Uniformly map source monitor width 0.50594 units to 0.400 m, center monitor X, put lowest reference geometry on the floor. Reference reconstruction stack proportions are not measurement evidence."
+  },
+  "aim": [
+    0.035,
+    -0.015,
+    0.205
+  ],
+  "orthographic_scale": 0.94,
+  "views": {
+    "front": [
+      0.035,
+      -1.5,
+      0.45
+    ],
+    "left": [
+      -0.9,
+      -1.2,
+      0.8
+    ],
+    "right": [
+      0.9,
+      -1.2,
+      0.8
+    ],
+    "top": [
+      0.035,
+      -0.015,
+      1.5
+    ],
+    "rear": [
+      0.035,
+      1.5,
+      0.65
+    ]
+  },
+  "budget": {
+    "triangles": 25000,
+    "mesh_nodes": 60,
+    "glb_bytes": 819200
+  }
+}

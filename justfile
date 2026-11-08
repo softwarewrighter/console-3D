@@ -18,6 +18,9 @@ render-2741:
 render-5471:
     python3 scripts/build.py 5471
 
+render-trs80:
+    python3 scripts/build.py trs80
+
 render-gpu:
     python3 scripts/build.py all --device OPTIX
 

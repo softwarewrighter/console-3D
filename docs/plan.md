@@ -65,3 +65,11 @@ reference viewer, not in the compact production model. Keep the 2741 separate.
 
 The last passing output remains available until the next candidate has complete
 artifacts and a visual review. Record rejected hypotheses as well as successes.
+
+## TRS-80 Model I desktop system
+
+Add the keyboard/CPU, expansion interface, CRT monitor, and one upright drive
+from the user-supplied Vintage Computer photograph. Evidence, dimensions,
+acceptance targets, and uncertainties: [trs80.md](trs80.md). Retain all three
+IBM models and the shared controls. Review six renders and an exported orbit
+before publishing the fourth model.

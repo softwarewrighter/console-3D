@@ -24,7 +24,8 @@ if hashlib.sha256(Path(r.get('config_path',ROOT/'models/comparison.json')).read_
 candidate=asset.parent
 build=json.loads((candidate/'report.json').read_text())
 model=build['model']
-if candidate.parent != ROOT/'work'/('ibm'+model) or not candidate.name.startswith('candidate-'):
+stem='trs80' if model=='trs80' else 'ibm'+model
+if candidate.parent != ROOT/'work'/stem or not candidate.name.startswith('candidate-'):
     p.error('Expected an unpromoted model candidate directory.')
 assert build['glb_round_trip']=='mesh names and bounds passed'
 budget=r['config']['budget'];stats=r['candidate_stats']
@@ -33,11 +34,11 @@ for field in ('triangles','mesh_nodes','glb_bytes'):
 for view in r['config']['views']:
     assert (report.parent/('compare-'+view+'.png')).is_file()
 for suffix in ('.glb','.blend','.obj','.mtl'):
-    assert (candidate/('ibm'+model+suffix)).stat().st_size>0
+    assert (candidate/(stem+suffix)).stat().st_size>0
 stamp=datetime.now().strftime('%Y%m%d-%H%M%S')
 acceptance={'accepted_utc':datetime.now(timezone.utc).isoformat(),'comparison':str(report),'candidate_sha256':r['candidate_sha256'],'reason':a.reason,'budget':budget,'stats':stats,'reviewed_views':list(r['config']['views'])}
 (candidate/'acceptance.json').write_text(json.dumps(acceptance,indent=2)+'\n')
-current=ROOT/'work'/('ibm'+model)/'out'
+current=ROOT/'work'/stem/'out'
 if current.exists():current.rename(current.with_name('out-before-accepted-'+stamp))
 candidate.rename(current)
 subprocess.run([sys.executable,str(ROOT/'scripts/make_preview.py')],check=True)
