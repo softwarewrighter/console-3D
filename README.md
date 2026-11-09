@@ -11,19 +11,42 @@ construction helpers. They export Blender, glTF, OBJ, and matched validation
 renders. The preview includes model switching, original reference images, and
 paired comparison viewers for the supplied dense reference GLBs.
 
-## View the models
+## View the models on GitHub
+
+The Blender renders below can be viewed directly on GitHub:
+
+- [TRS-80 Model I render](images/trs80-render.png)
+- [IBM 1053 render](images/ibm1053-render.png)
+- [IBM 2741 render](images/ibm2741-render.png)
+- [IBM 5471 render](images/ibm5471-render.png)
+
+A public interactive demo is not deployed. The interactive viewer and comparison
+pages run from generated build output; GitHub's repository view displays their
+source rather than running them.
+
+## Run the interactive preview locally
+
+After building the models, start the preview server:
 
 ```sh
-just view-serve     # serve existing output at http://127.0.0.1:5803/
-just view           # open the configured interactive Chromium window
+just view-serve     # assemble and serve existing output on port 5803
+just view          # open the configured interactive Chromium window
 ```
 
-- [Four-model preview](http://127.0.0.1:5803/)
-- [TRS-80 Model I preview](http://127.0.0.1:5803/?model=trs80)
-- [TRS-80 / supplied GLB comparison](http://127.0.0.1:5803/compare.html?model=trs80)
-- [1053 / full console comparison](http://127.0.0.1:5803/compare.html)
-- [2741 comparison](http://127.0.0.1:5803/compare.html?model=2741)
-- [5471 comparison](http://127.0.0.1:5803/compare.html?model=5471)
+Open these paths on your preview server:
+
+```text
+http://localhost:5803/                         All four models
+http://localhost:5803/?model=trs80             TRS-80 Model I
+http://localhost:5803/compare.html             IBM 1053 comparison
+http://localhost:5803/compare.html?model=2741  IBM 2741 comparison
+http://localhost:5803/compare.html?model=5471  IBM 5471 comparison
+http://localhost:5803/compare.html?model=trs80 TRS-80 comparison (local reference required)
+```
+
+For another computer on the same network, replace `localhost` with the server's
+LAN address. The server binds to all interfaces. The supplied TRS-80 reference GLB
+stays local and is not included in Git.
 
 The Linux launcher uses Lucy's verified dedicated Chromium profile and explicit
 `--use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader` flags. Use
@@ -38,7 +61,7 @@ those artifacts. Production geometry is rebuilt, not extracted from those cuts.
 
 ## Animate the shared mechanism
 
-Open [program-controlled motion](http://127.0.0.1:5803/animate.html?model=2741)
+With the preview server running, open `http://localhost:5803/animate.html?model=2741`
 for the 2741, 1053, or 5471. Apply tilt and rotation, advance, backspace, or return
 the carrier using buttons, editable JSON commands, or `window.selectric`.
 See [docs/animation.md](docs/animation.md) for the API, rig hierarchy, and limits.
@@ -196,7 +219,7 @@ transparency, and reconstruction errors affect them.
   controls, materials, compaction, rendering, and GLB validation.
 - `models/*-keyboard.json`, `textures/` — keyboard layouts and small print atlases.
 - `scripts/build.py`, `compare.py`, `accept_candidate.py` — build/review/promotion.
-- `web/`, `scripts/make_preview.py` — three-model and paired-reference viewers.
+- `web/`, `scripts/make_preview.py` — four-model and paired-reference viewers.
 - `scripts/check_preview.py`, `check_comparison.py` — real browser loading,
   controls, synchronized rotation, mobile layout, and console checks.
 
