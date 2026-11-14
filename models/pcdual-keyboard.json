@@ -1,0 +1,670 @@
+{
+  "pitch_m": 0.019,
+  "keys": [
+    {
+      "legend": "F1",
+      "x": -0.218,
+      "y": 0.046,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "F2",
+      "x": -0.199,
+      "y": 0.046,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "F3",
+      "x": -0.218,
+      "y": 0.027,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "F4",
+      "x": -0.199,
+      "y": 0.027,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "F5",
+      "x": -0.218,
+      "y": 0.008,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "F6",
+      "x": -0.199,
+      "y": 0.008,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "F7",
+      "x": -0.218,
+      "y": -0.010999999999999996,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "F8",
+      "x": -0.199,
+      "y": -0.010999999999999996,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "F9",
+      "x": -0.218,
+      "y": -0.03,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "F10",
+      "x": -0.199,
+      "y": -0.03,
+      "width": 1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "Esc",
+      "x": -0.16,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "1 !",
+      "x": -0.14100000000000001,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "2 @",
+      "x": -0.122,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "3 #",
+      "x": -0.10300000000000001,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "4 $",
+      "x": -0.084,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "5 %",
+      "x": -0.065,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "6 ^",
+      "x": -0.04600000000000001,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "7 &",
+      "x": -0.026999999999999996,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "8 *",
+      "x": -0.008000000000000007,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "9 (",
+      "x": 0.010999999999999982,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "0 )",
+      "x": 0.03,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "- _",
+      "x": 0.04899999999999999,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "= +",
+      "x": 0.06799999999999998,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "Bksp",
+      "x": 0.087,
+      "y": 0.046,
+      "width": 1.05,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "Tab",
+      "x": -0.16,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "Q",
+      "x": -0.14100000000000001,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "W",
+      "x": -0.122,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "E",
+      "x": -0.10300000000000001,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "R",
+      "x": -0.084,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "T",
+      "x": -0.065,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "Y",
+      "x": -0.04600000000000001,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "U",
+      "x": -0.026999999999999996,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "I",
+      "x": -0.008000000000000007,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "O",
+      "x": 0.010999999999999982,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "P",
+      "x": 0.03,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "[ {",
+      "x": 0.04899999999999999,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "] }",
+      "x": 0.06799999999999998,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "Ctrl",
+      "x": -0.157,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "A",
+      "x": -0.138,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "S",
+      "x": -0.119,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "D",
+      "x": -0.1,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "F",
+      "x": -0.081,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "G",
+      "x": -0.062,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "H",
+      "x": -0.04300000000000001,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "J",
+      "x": -0.023999999999999997,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "K",
+      "x": -0.005000000000000007,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "L",
+      "x": 0.013999999999999981,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "; :",
+      "x": 0.033,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "' '",
+      "x": 0.05199999999999999,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "Enter",
+      "x": 0.07099999999999998,
+      "y": 0.008,
+      "width": 1.05,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "Shift",
+      "x": -0.16,
+      "y": -0.010999999999999996,
+      "width": 1.05,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "\\ |",
+      "x": -0.14100000000000001,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "Z",
+      "x": -0.122,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "X",
+      "x": -0.10300000000000001,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "C",
+      "x": -0.084,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "V",
+      "x": -0.065,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "B",
+      "x": -0.04600000000000001,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "N",
+      "x": -0.026999999999999996,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "M",
+      "x": -0.008000000000000007,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": ", <",
+      "x": 0.010999999999999982,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": ". >",
+      "x": 0.03,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "/ ?",
+      "x": 0.04899999999999999,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "Shift",
+      "x": 0.06799999999999998,
+      "y": -0.010999999999999996,
+      "width": 1.05,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "Alt",
+      "x": -0.151,
+      "y": -0.035,
+      "width": 1.2,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "Space",
+      "x": -0.027,
+      "y": -0.035,
+      "width": 10.1,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "Caps",
+      "x": 0.09,
+      "y": -0.035,
+      "width": 1.1,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "Num",
+      "x": 0.145,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "Scroll",
+      "x": 0.16399999999999998,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "-",
+      "x": 0.183,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "7 Home",
+      "x": 0.145,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "8 \u2191",
+      "x": 0.16399999999999998,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "9 PgUp",
+      "x": 0.183,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "4 \u2190",
+      "x": 0.145,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "5",
+      "x": 0.16399999999999998,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "6 \u2192",
+      "x": 0.183,
+      "y": 0.008,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "1 End",
+      "x": 0.145,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "2 \u2193",
+      "x": 0.16399999999999998,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "3 PgDn",
+      "x": 0.183,
+      "y": -0.010999999999999996,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "0 Ins",
+      "x": 0.145,
+      "y": -0.03,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": ". Del",
+      "x": 0.16399999999999998,
+      "y": -0.03,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "+",
+      "x": 0.183,
+      "y": -0.03,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    },
+    {
+      "legend": "PrtSc",
+      "x": 0.113,
+      "y": 0.046,
+      "width": 0.94,
+      "height": 1,
+      "tone": "gray"
+    },
+    {
+      "legend": "*",
+      "x": 0.113,
+      "y": 0.027,
+      "width": 0.94,
+      "height": 1,
+      "tone": "ivory"
+    }
+  ],
+  "status": "Model F style, photo-led; exact 83-key geometry remains provisional"
+}

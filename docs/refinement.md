@@ -35,6 +35,9 @@ For each change:
   views and five reference comparisons. Keyboard width and monitor width are
   museum constrained; expansion shelf profile, precise key spacing, disk latch,
   monitor rear details, and cable routing remain provisional. See [trs80.md](trs80.md).
+- Dual-monitor IBM PC: compact first baseline uses independent chassis, keyboard,
+  and CRT assemblies. Monitor angle/offset, wide-key profiles, edge details,
+  unseen rear fittings, wear and lettering remain later work; see [pcdual.md](pcdual.md).
 - Mechanical motion: carrier travel, element tilt/spin, backspace, and return
   are implemented through separate pivots and checked in the browser. Exact
   character-code mapping, print impact and paper feed remain future work;
@@ -45,3 +48,5 @@ checks. Failed candidates and prior outputs remain under `work/ibm*/` for review
 The preview serves only the latest passing output of each model. Use
 `--candidate-only`, matched comparisons, and `accept_candidate.py` for new
 refinements so visual review happens before promotion.
+
+029 correction now uses Columbia / IBM manual photos directly. Open card stations, combination keyboard, operator knee clearance, and detached keyboard gap replace the rejected solid-block study. See `029-plan.md` and `/029-comparison/`; upper housing proportions and concealed mechanism details remain provisional.

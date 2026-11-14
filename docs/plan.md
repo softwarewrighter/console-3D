@@ -73,3 +73,19 @@ from the user-supplied Vintage Computer photograph. Evidence, dimensions,
 acceptance targets, and uncertainties: [trs80.md](trs80.md). Retain all three
 IBM models and the shared controls. Review six renders and an exported orbit
 before publishing the fourth model.
+
+## Dual-monitor IBM PC
+
+Add the supplied photo / dense GLB workstation as the fifth study. Preserve the
+original photo and keep the supplied GLB ignored. Baseline includes desktop,
+two drives, keyboard, and two green CRTs. Review all production views, matched
+model views, and a labeled photo/detailed/compact triptych. Lettering is deferred
+by user instruction. Evidence and limitations: [pcdual.md](pcdual.md).
+
+## Four additional equipment previews
+
+3279 graphics terminal, 029 keypunch, COR24-TB board and MacBook Pro M1 Max
+are implemented as separate first-pass procedural candidates, with original
+photos and local untracked GLBs. The 029 scope expanded from planning to building
+when requested. Review notes, assumptions and commands: [equipment-previews.md](equipment-previews.md).
+Top-level local index: `/new-models.html`; the server binds to `0.0.0.0:5803`.

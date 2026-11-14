@@ -24,7 +24,7 @@ if hashlib.sha256(Path(r.get('config_path',ROOT/'models/comparison.json')).read_
 candidate=asset.parent
 build=json.loads((candidate/'report.json').read_text())
 model=build['model']
-stem='trs80' if model=='trs80' else 'ibm'+model
+stem=model if model in ('trs80','pcdual','cor24','macbook') else 'ibm'+model
 if candidate.parent != ROOT/'work'/stem or not candidate.name.startswith('candidate-'):
     p.error('Expected an unpromoted model candidate directory.')
 assert build['glb_round_trip']=='mesh names and bounds passed'

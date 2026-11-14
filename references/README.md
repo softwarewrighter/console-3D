@@ -63,3 +63,28 @@ system panel. The current model represents the 1130 installation.
 `trs80-model-i.jpg` is the unmodified photograph from [Vintage Computer](https://vintagecomputer.com/tandy-trs-80-model-i.html), downloaded 2026-11-08. Photographer and license are not established; it is retained as user-requested modeling evidence. The depicted arrangement, museum measurements, uncertainties, and first-pass acceptance criteria are recorded in [../docs/trs80.md](../docs/trs80.md).
 
 `trs80-reference.glb` is ignored by Git and remains local. It preserves the user-supplied `/home/mike/Downloads/sample_2026-11-08T211606.306.glb` unchanged (286,564 triangles, one mesh). Its reconstruction provenance beyond the supplied file is unknown. Lucy CPU import/render/export diagnostic passed in `work/trs80-reference-check/20261108-121441/1/`; normalization applies only to that diagnostic. See `models/comparison-trs80.json` for the separate physical-scale comparison transform.
+
+## Dual-monitor IBM PC
+
+`ibmpc-dual-photo.jpg` is the unmodified user-supplied `/disk1/block-dual-monitor-pc.jpg`. `ibmpc-dual-reference.glb` is the unchanged local copy of `/disk1/sample_2026-11-09T181906.969.glb` (285,518 triangles). The GLB is ignored and not tracked. Photographer, license and reconstruction origin are unknown. Photo cropping, inferred dimensions, comparison alignment and remaining work are recorded in [../docs/pcdual.md](../docs/pcdual.md).
+
+## 3279, 029, COR24-TB and MacBook
+
+Original photos and exact supplied GLB paths are recorded in [equipment preview provenance](../docs/equipment-previews.md). Photos are preserved unchanged as `ibm3279-photo.jpg`, `ibm029-photo.jpg`, `cor24-photo.jpg`, and `macbook-photo.jpg`. Their corresponding `*-reference.glb` files stay local and ignored by Git; rights and reconstruction origin remain unverified.
+
+
+### IBM 029 Columbia refinement references
+
+Source page: https://www.columbia.edu/cu/computinghistory/029.html (public image
+files retrieved from the alternate www.cc.columbia.edu host, 2026-11-13).
+`029-columbia-029b.jpg`, `029-columbia-029-64.jpg`, `029-columbia-029-keys.jpg`,
+and `029-columbia-029-drum.jpg` are unmodified IBM manual images as reproduced by
+Columbia. The page's reference list identifies IBM A24-3332-1, February 1965;
+its introductory caption inconsistently says 1960. `029-columbia-ibm029c.jpg` is
+the linked unmodified color photograph, photographer/license unconfirmed.
+`029-lcm-color.jpg` is Joe Mabel's April 3, 2014 Living Computer Museum photo,
+[original record](https://commons.wikimedia.org/wiki/File:LCM_-_IBM_029_Card_Punch_01.jpg),
+[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), original unmodified.
+The LCM image was consulted for colors/details, not included in the comparison
+sheets. IBM and uncredited source photos retain their original rights; they and
+labeled comparison derivatives are not covered by the project MIT source license.

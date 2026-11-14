@@ -1,0 +1,69 @@
+{
+  "model": "pcdual",
+  "reference": "references/ibmpc-dual-reference.glb",
+  "reference_kind": "User supplied dense dual IBM PC reconstruction; original photo retained as primary appearance evidence",
+  "source_blender_printer_region": {
+    "min": [
+      -1,
+      -1,
+      -1
+    ],
+    "max": [
+      1,
+      1,
+      1
+    ],
+    "status": "Entire supplied model; no diagnostic clipping"
+  },
+  "alignment": {
+    "scale": 0.87,
+    "translation": [
+      0.15,
+      0,
+      0.217832
+    ],
+    "description": "Uniform approximate map to nominal 500 mm chassis and floor. Reconstruction proportions are not physical measurements."
+  },
+  "aim": [
+    0.215,
+    -0.04,
+    0.22
+  ],
+  "orthographic_scale": 1.3,
+  "perspective_views": [
+    "front"
+  ],
+  "perspective_lens_mm": 50,
+  "views": {
+    "front": [
+      0.215,
+      -1.8,
+      0.8
+    ],
+    "left": [
+      -1.2,
+      -1.7,
+      1.0
+    ],
+    "right": [
+      1.5,
+      -1.7,
+      1.0
+    ],
+    "top": [
+      0.215,
+      -0.04,
+      1.8
+    ],
+    "rear": [
+      0.215,
+      1.8,
+      0.8
+    ]
+  },
+  "budget": {
+    "triangles": 30000,
+    "mesh_nodes": 70,
+    "glb_bytes": 1572864
+  }
+}

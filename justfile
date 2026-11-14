@@ -18,6 +18,9 @@ render-2741:
 render-5471:
     python3 scripts/build.py 5471
 
+render-pcdual:
+    python3 scripts/build.py pcdual
+
 render-trs80:
     python3 scripts/build.py trs80
 

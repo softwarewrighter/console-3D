@@ -48,10 +48,10 @@ def main():
         if '--renders-only' in sys.argv:
             api('POST',prefix+'/url',{'url':'http://127.0.0.1:5803/?renders=1'})
             wait("return document.querySelector('#still').complete && document.querySelector('#still').naturalWidth > 0")
-            for model in ('2741','5471','trs80','1053'):
+            for model in ('2741','5471','trs80','pcdual','1053'):
                 click('[data-model="'+model+'"]')
                 wait("return document.querySelector('#still').complete && document.querySelector('#still').naturalWidth > 0")
-                assert js("return document.querySelector('#model-heading').textContent") == ('TRS-80 Model I' if model=='trs80' else 'IBM '+model)
+                assert js("return document.querySelector('#model-heading').textContent") == ({'trs80':'TRS-80 Model I','pcdual':'IBM PC · dual monitor'}.get(model,'IBM '+model))
                 assert js("return document.querySelector('[data-mode=\"3d\"]').disabled")
             click('[data-mode="reference"]')
             wait("return document.querySelector('#still').complete && document.querySelector('#still').naturalWidth > 0")
@@ -61,14 +61,14 @@ def main():
             print('Render-only fallback: both model switches, reference photo, and browser console passed')
             return
         api('POST',prefix+'/url',{'url':'http://127.0.0.1:5803/'})
-        for model in ('1053','2741','5471','trs80','1053'):
+        for model in ('1053','2741','5471','trs80','pcdual','1053'):
             click('[data-model="'+model+'"]')
             wait("return document.querySelector('#status').textContent.startsWith('Ready') && document.querySelector('#mv').loaded")
-            assert js("return document.querySelector('#model-heading').textContent") == ('TRS-80 Model I' if model=='trs80' else 'IBM '+model)
-            assert js("return document.querySelector('#mv').src").endswith(model+'/'+('trs80' if model=='trs80' else 'ibm'+model)+'.glb')
-            assert js("return document.querySelector('#animate-mechanism').hidden") == (model=='trs80')
+            assert js("return document.querySelector('#model-heading').textContent") == ({'trs80':'TRS-80 Model I','pcdual':'IBM PC · dual monitor'}.get(model,'IBM '+model))
+            assert js("return document.querySelector('#mv').src").endswith(model+'/'+(model if model in ('trs80','pcdual') else 'ibm'+model)+'.glb')
+            assert js("return document.querySelector('#animate-mechanism').hidden") == (model in ('trs80','pcdual'))
             click('[data-preset="detail"]')
-            assert js("return document.querySelector('#mv').cameraTarget") == ('0m .07m .235m' if model=='trs80' else '0m 0.14m 0.07m')
+            assert js("return document.querySelector('#mv').cameraTarget") == ('0m .06m .29m' if model=='pcdual' else '0m .07m .235m' if model=='trs80' else '0m 0.14m 0.07m')
             time.sleep(.7)
             before = js("return document.querySelector('#mv').getCameraOrbit().radius")
             click('[data-action="zoom-in"]')
@@ -84,7 +84,7 @@ def main():
             click('[data-mode="3d"]')
             assert not js("return document.querySelector('#mv').hidden")
             shot(model+'-desktop')
-            results.append(('TRS-80 Model I' if model=='trs80' else 'IBM '+model)+': loaded, camera preset, zoom/reset, render and reference switches passed')
+            results.append(({'trs80':'TRS-80 Model I','pcdual':'IBM PC · dual monitor'}.get(model,'IBM '+model))+': loaded, camera preset, zoom/reset, render and reference switches passed')
         # Exercise shared keyboard handling after repeated model changes. Exactly
         # one handler should apply a 1.25x zoom-out per key press.
         before = js("return document.querySelector('#mv').getCameraOrbit().radius")

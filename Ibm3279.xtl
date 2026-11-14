@@ -1,0 +1,4 @@
+"bp:" u_se< "Bpy"
+l:s_cene := { z ->
+  (bp:p_iece "IBM 3279 graphics workstation") c_at "build_3279()\nfinish('3279')\n"
+}

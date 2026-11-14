@@ -477,7 +477,7 @@ def compact_1053(root):
 
 def finish(model):
     from datetime import datetime, timezone
-    root = bpy.data.objects.get({'1053':'IBM 1053 console printer','2741':'IBM 2741 desktop APL terminal','5471':'IBM 5471 System 3 console','trs80':'TRS-80 Model I desktop system'}[model])
+    root = bpy.data.objects.get({'1053':'IBM 1053 console printer','2741':'IBM 2741 desktop APL terminal','5471':'IBM 5471 System 3 console','trs80':'TRS-80 Model I desktop system','pcdual':'IBM PC dual monitor workstation','3279':'IBM 3279 graphics workstation','029':'IBM 029 keypunch','cor24':'COR24 TB development board','macbook':'MacBook Pro M1 Max'}[model])
     for o in PARTS:
         if o.parent is None:o.parent = root
     carrier=bpy.data.objects.get('selectric_carrier')
@@ -499,7 +499,7 @@ def finish(model):
         o['semantic_name'] = o.name
         o.select_set(True)
     bpy.context.view_layer.objects.active = root
-    stem = 'trs80' if model=='trs80' else 'ibm'+model
+    stem = model if model in ('trs80','pcdual','cor24','macbook') else 'ibm'+model
     mechanism_config=None
     if carrier:
         travel_columns=125 if model=='5471' else 130
@@ -561,10 +561,26 @@ def finish(model):
     if model=='trs80':
         scene['dimension_status']='Keyboard 424 x 205 x 85 mm and monitor 400 x 310 x 280 mm constrained by Museums Victoria HT1839; photo-led expansion fascia and upright disk orientation, rear fittings inferred.'
         views=[('overview',(.85,-1.30,.91),(.035,-.015,.205),.92),('front',(.035,-1.4,.68),(.035,-.015,.205),.82),('left',(-.9,-1.2,.8),(.035,-.015,.205),.94),('right',(.9,-1.2,.8),(.035,-.015,.205),.94),('top',(.035,-.015,1.5),(.035,-.015,0),.92),('detail',(.40,-.72,.66),(.05,-.20,.065),.53)]
+    if model=='pcdual':
+        scene['dimension_status']='5150-style chassis nominal 500 x 410 x 142 mm; monitor and keyboard dimensions inferred from supplied photograph and GLB.'
+        views=[('overview',(1.2,-1.8,1.05),(.215,-.04,.22),1.30),('front',(.215,-1.8,.80),(.215,-.04,.22),1.20),('left',(-1.2,-1.7,1.0),(.215,-.04,.22),1.36),('right',(1.5,-1.7,1.0),(.215,-.04,.22),1.36),('top',(.215,-.04,1.8),(.215,-.04,0),1.32),('detail',(.40,-.90,.65),(0,-.29,.06),.66)]
+        views += [('perspective',(1.2,-1.8,1.0),(.215,-.04,.22),1.30),('front-perspective',(.215,-1.8,.80),(.215,-.04,.22),1.20)]
+    if model in ('3279','029','cor24','macbook'):
+        specs={
+          '3279':((0,-.02,.27),1.18,(1.0,-1.5,.95),(0,-1.6,.78),1.0),
+          '029':((0,0,.65),1.95,(1.8,-2.5,1.95),(0,-2.6,1.6),1.75),
+          'cor24':((0,0,.002),.125,(.08,-.10,.14),(0,-.10,.13),.115),
+          'macbook':((0,.015,.12),.62,(.45,-.65,.55),(0,-.65,.46),.52)}
+        aim,scale,oblique,frontal,frontscale=specs[model]
+        views=[('overview',oblique,aim,scale),('front',frontal,aim,frontscale),('left',(-oblique[0],oblique[1],oblique[2]),aim,scale),('right',oblique,aim,scale),('top',(aim[0],aim[1],max(.4,scale*2)),aim,scale),('detail',(oblique[0]*.65,oblique[1]*.65,oblique[2]*.8),aim,scale*.67),('perspective',oblique,aim,scale),('front-perspective',frontal,aim,frontscale)]
+        scene['dimension_status']='Photo-led provisional scale and hidden details; dimensions require measured hardware or drawings.'
     if model=='trs80':views += [('perspective',(.85,-1.30,.80),(.035,-.015,.190),.92),('front-perspective',(.035,-1.30,.55),(.035,-.015,.190),.82)]
+    if model=='cor24':
+        for light in [o for o in scene.objects if o.type=='LIGHT']:
+            light.location *= .16;light.data.energy *= .0256;light.data.size *= .16
     for name, loc, aim, scale in views:
         data = bpy.data.cameras.new(name); data.type = 'ORTHO'; data.ortho_scale = scale
-        if name in ('perspective','front-perspective'):data.type='PERSP';data.lens=58 if name=='perspective' else 60;data.sensor_width=36
+        if name in ('perspective','front-perspective'):data.type='PERSP';data.lens=(50 if model in ('pcdual','3279','029','macbook') else 55 if model=='cor24' else 58 if name=='perspective' else 60);data.sensor_width=36
         cam = bpy.data.objects.new('camera '+name,data); scene.collection.objects.link(cam); cam.location = loc
         cam.rotation_euler = (Vector(aim)-cam.location).to_track_quat('-Z','Y').to_euler()
         scene.camera = cam
@@ -577,5 +593,9 @@ def finish(model):
     report = {'model':model,'generated_utc':datetime.now(timezone.utc).isoformat(),'blender':bpy.app.version_string,'device':device,'mesh_count':len(hardware),'logical_component_count':logical_count,'triangle_count':triangle_count,'draw_calls':draw_calls,'glb_bytes':len(glb_data),'bounds_m':bounds,'dimensions_m':[b-a for a,b in bounds],'glb_round_trip':'mesh names and bounds passed','dimension_status':scene['dimension_status'],'objects':sorted(o.name for o in hardware),'remaining_mismatches':['Absolute shell dimensions inferred','Small legends and rear fittings provisional','2741 desk configuration not modeled; photographed desktop unit targeted']}
     if model=='trs80':
         report['dimension_status']=scene['dimension_status'];report['remaining_mismatches']=['Expansion-interface front height matched to supplied photo; museum lists a different overall height','Disk enclosure inferred from photo and museum unit rotated upright','Rear monitor controls and cable routes inferred','CRT coating and fine wear remain approximate'];report['reference']='https://vintagecomputer.com/tandy-trs-80-model-i.html'
+    if model=='pcdual':
+        report['dimension_status']=scene['dimension_status'];report['reference']='references/ibmpc-dual-photo.jpg';report['remaining_mismatches']=['Monitor rear geometry and complete second monitor inferred beyond photo crop','Exact Model F key outlines and spacing provisional','CRT artwork redrawn rather than captured from hardware','Chassis variant and absolute screen dimensions provisional']
+    if model in ('3279','029','cor24','macbook'):
+        report['dimension_status']=scene['dimension_status'];report['remaining_mismatches']=['Scale and hidden geometry inferred from references','Exact labels and layouts provisional','Materials and small fittings need measured reference']
     (OUTPUT/'report.json').write_text(json.dumps(report,indent=2)+'\n')
     print('CONSOLE_BUILD_COMPLETE',model)

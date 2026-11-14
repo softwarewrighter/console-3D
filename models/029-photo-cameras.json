@@ -1,0 +1,154 @@
+{
+  "camera_policy": "Frozen before geometry revision. Manual photo fit uses unchanged tabletop corners and feet only. Interior card stations and keyboard excluded from fit. Color crop uses approximate fixed camera, not a calibrated fit.",
+  "uncertainty": "Hand-selected image landmarks, inferred desktop dimensions and unknown distortion; fit is diagnostic, not physical measurement.",
+  "views": [
+    {
+      "id": "manual",
+      "photo": "references/029-columbia-029b.jpg",
+      "source_page": "https://www.columbia.edu/cu/computinghistory/029.html",
+      "credit": "IBM 29 Card Punch Reference Manual A24-3332-1, via Columbia University Computing History",
+      "size": [
+        700,
+        723
+      ],
+      "camera_location": [
+        -1.5275803976734954,
+        -1.971222577860532,
+        1.2303532007766917
+      ],
+      "camera_rotation_matrix": [
+        [
+          0.8055256175263772,
+          0.11891308468648956,
+          -0.5805068111565036
+        ],
+        [
+          -0.5893522824731072,
+          0.26258618017535373,
+          -0.7640107231738672
+        ],
+        [
+          0.06158219428120152,
+          0.9575532237276738,
+          0.28160159281554487
+        ]
+      ],
+      "lens_mm": 60.820932678714996,
+      "fit_rms_coordinate_px": 14.622887601522294,
+      "fit_points": {
+        "table_front_left": {
+          "model": [
+            -0.65,
+            -0.38,
+            0.7825
+          ],
+          "photo": [
+            180,
+            310
+          ],
+          "projected": [
+            184.8922824847796,
+            301.8688900843853
+          ]
+        },
+        "table_front_right": {
+          "model": [
+            0.65,
+            -0.38,
+            0.7825
+          ],
+          "photo": [
+            693,
+            225
+          ],
+          "projected": [
+            707.9419761135866,
+            248.9825484415369
+          ]
+        },
+        "table_rear_left": {
+          "model": [
+            -0.65,
+            0.38,
+            0.7825
+          ],
+          "photo": [
+            14,
+            198
+          ],
+          "projected": [
+            6.498313625884805,
+            219.05878048377994
+          ]
+        },
+        "front_left_foot": {
+          "model": [
+            -0.59,
+            -0.3,
+            0.005
+          ],
+          "photo": [
+            191,
+            708
+          ],
+          "projected": [
+            183.39970928570204,
+            701.6357830714368
+          ]
+        },
+        "front_right_foot": {
+          "model": [
+            0.59,
+            -0.3,
+            0.005
+          ],
+          "photo": [
+            611,
+            592
+          ],
+          "projected": [
+            617.6904864957269,
+            561.7153996304658
+          ]
+        },
+        "rear_left_foot": {
+          "model": [
+            -0.59,
+            0.3,
+            0.005
+          ],
+          "photo": [
+            64,
+            571
+          ],
+          "projected": [
+            53.16112133578662,
+            571.2351927209742
+          ]
+        }
+      }
+    },
+    {
+      "id": "color",
+      "photo": "references/029-columbia-ibm029c.jpg",
+      "source_page": "https://www.columbia.edu/cu/computinghistory/029.html",
+      "credit": "Color photograph linked by Columbia, original photographer/license unconfirmed",
+      "size": [
+        1024,
+        768
+      ],
+      "camera_location": [
+        0.035,
+        -2.3,
+        1.85
+      ],
+      "camera_target": [
+        0,
+        0.02,
+        0.91
+      ],
+      "lens_mm": 62,
+      "fit_rms_coordinate_px": null
+    }
+  ]
+}

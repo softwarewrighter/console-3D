@@ -1,0 +1,5 @@
+## IBM PC dual green-monitor workstation, photo and supplied GLB guided.
+"bp:" u_se< "Bpy"
+l:s_cene := { z ->
+  (bp:p_iece "IBM PC dual monitor workstation") c_at "build_pcdual()\nfinish('pcdual')\n"
+}

@@ -4,17 +4,26 @@
 **IBM 1053 console (used on IBM 1130/1800 systems)**, **IBM 2741 APL terminal**, and **IBM 5471 System/3
 printer-keyboard**, built around shared Selectric construction helpers. A fourth
 study reconstructs the **TRS-80 Model I** keyboard/CPU, expansion interface,
-CRT monitor, and upright mini-disk drive.
+CRT monitor, and upright mini-disk drive. A fifth study adds an **IBM PC with two
+green CRT monitors**, dual disk drives, and a detached keyboard.
 
 The models are authored through X_eTaL's Blender extension and detailed Python
 construction helpers. They export Blender, glTF, OBJ, and matched validation
 renders. The preview includes model switching, original reference images, and
 paired comparison viewers for the supplied dense reference GLBs.
 
+## New equipment candidates
+
+Four additional procedural studies—IBM 3279, IBM 029, COR24-TB and MacBook Pro—
+have a separate local index at `/new-models.html` on the preview server. These
+are first-pass candidates; see [build commands, provenance and limitations](docs/equipment-previews.md).
+
 ## View the models on GitHub
 
 The Blender renders below can be viewed directly on GitHub:
 
+- [Dual-monitor IBM PC render](images/pcdual-render.png)
+- [Photo / detailed GLB / compact PC comparison](images/pcdual-three-way.jpg)
 - [TRS-80 Model I render](images/trs80-render.png)
 - [IBM 1053 render](images/ibm1053-render.png)
 - [IBM 2741 render](images/ibm2741-render.png)
@@ -36,7 +45,8 @@ just view          # open the configured interactive Chromium window
 Open these paths on your preview server:
 
 ```text
-http://localhost:5803/                         All four models
+http://localhost:5803/                         All five models
+http://localhost:5803/?model=pcdual            Dual-monitor IBM PC
 http://localhost:5803/?model=trs80             TRS-80 Model I
 http://localhost:5803/compare.html             IBM 1053 comparison
 http://localhost:5803/compare.html?model=2741  IBM 2741 comparison
@@ -81,6 +91,7 @@ await selectric.carriageReturn();
 | IBM 2741 APL terminal | 14 | 12,666 | 602 KiB | Museum photograph and supplied loaded-paper GLB |
 | IBM 5471 System/3 console | 14 | 11,816 | 561 KiB | Supplied GLB plus IBM Components Reference Figures 8-1 and 8-2 |
 | TRS-80 Model I system | 34 | 14,862 | 695 KiB | Supplied photograph and dense GLB, Museums Victoria component dimensions |
+| IBM PC / dual CRT workstation | 27 | 25,024 | 1,098 KiB | Supplied photo and local dense GLB; provisional 5150-style envelope |
 
 ### IBM 1053
 
@@ -141,6 +152,19 @@ viewer and is deliberately excluded from Git. To reproduce that optional
 comparison, place your copy at `references/trs80-reference.glb`. The procedural
 model builds without it.
 
+### Dual-monitor IBM PC
+
+![Compact Blender render of the dual-monitor IBM PC workstation](images/pcdual-render.png)
+
+![Original photograph, supplied detailed GLB, and compact Blender model](images/pcdual-three-way.jpg)
+
+The first pass includes two green CRTs at different heights, the dual-drive
+system unit, a detached 83-cap keyboard, and interconnect cables. The original
+photo is the appearance reference; the dense reconstruction is a shape aid and
+remains untracked. Exact lettering is deferred by request. Keyboard outlines,
+monitor angle/offset and unseen fittings remain provisional.
+See [PC evidence and comparison notes](docs/pcdual.md).
+
 Physical shell dimensions, some small details, and unseen rear fittings remain
 provisional. Dense reconstructions are comparison aids rather than measurement
 authorities. See [reference provenance](references/README.md) and
@@ -154,10 +178,11 @@ if that checkout is elsewhere.
 
 ```sh
 just setup          # local ./X_eTaL-extensions and its pinned X_eTaL runtime
-just render-gpu     # all four models with OptiX
-just render         # all four models with CPU
+just render-gpu     # all five models with OptiX
+just render         # all five models with CPU
 just render-1053
 just render-trs80
+just render-pcdual
 just render-2741
 just render-5471
 just viewer         # rebuild preview from existing passing outputs
@@ -219,7 +244,7 @@ transparency, and reconstruction errors affect them.
   controls, materials, compaction, rendering, and GLB validation.
 - `models/*-keyboard.json`, `textures/` — keyboard layouts and small print atlases.
 - `scripts/build.py`, `compare.py`, `accept_candidate.py` — build/review/promotion.
-- `web/`, `scripts/make_preview.py` — four-model and paired-reference viewers.
+- `web/`, `scripts/make_preview.py` — five-model and paired-reference viewers.
 - `scripts/check_preview.py`, `check_comparison.py` — real browser loading,
   controls, synchronized rotation, mobile layout, and console checks.
 

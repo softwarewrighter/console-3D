@@ -1,0 +1,594 @@
+{
+  "source": "Columbia / IBM A24-3332-1 Figure 8, combination keyboard",
+  "keys": [
+    {
+      "legend": "MULT\nPCH",
+      "rect": [
+        233,
+        70,
+        339,
+        178
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "#\n@",
+      "rect": [
+        384,
+        70,
+        490,
+        178
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": ",\n%",
+      "rect": [
+        540,
+        70,
+        646,
+        178
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "$\n*",
+      "rect": [
+        691,
+        70,
+        797,
+        178
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": ".\n<",
+      "rect": [
+        845,
+        70,
+        951,
+        178
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "",
+      "rect": [
+        1000,
+        70,
+        1106,
+        178
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "DUP",
+      "rect": [
+        1154,
+        70,
+        1260,
+        178
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "\u2212\n-",
+      "rect": [
+        1308,
+        70,
+        1414,
+        178
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "0\n/",
+      "rect": [
+        1461,
+        70,
+        1567,
+        178
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "PROG\nONE",
+      "rect": [
+        1615,
+        70,
+        1721,
+        178
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "REL",
+      "rect": [
+        1771,
+        70,
+        1877,
+        178
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "PROG\nTWO",
+      "rect": [
+        1927,
+        70,
+        2033,
+        178
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "+\nQ",
+      "rect": [
+        268,
+        228,
+        374,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "\u2014\nW",
+      "rect": [
+        424,
+        228,
+        530,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": ")\nE",
+      "rect": [
+        578,
+        228,
+        684,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "\u00a2\nR",
+      "rect": [
+        733,
+        228,
+        839,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "0\u20138\u20132\nT",
+      "rect": [
+        886,
+        228,
+        992,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "\u2020\nY",
+      "rect": [
+        1041,
+        228,
+        1147,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "1\nU",
+      "rect": [
+        1197,
+        228,
+        1303,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "2\nI",
+      "rect": [
+        1352,
+        228,
+        1458,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "3\nO",
+      "rect": [
+        1508,
+        228,
+        1614,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "&\nP",
+      "rect": [
+        1666,
+        228,
+        1772,
+        334
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "FEED",
+      "rect": [
+        1820,
+        228,
+        1926,
+        334
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "A",
+      "rect": [
+        307,
+        386,
+        413,
+        490
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": ">\nS",
+      "rect": [
+        465,
+        386,
+        571,
+        490
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": ":\nD",
+      "rect": [
+        622,
+        386,
+        728,
+        490
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": ";\nF",
+      "rect": [
+        779,
+        386,
+        885,
+        490
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "\u00ac\nG",
+      "rect": [
+        936,
+        386,
+        1042,
+        490
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "'\nH",
+      "rect": [
+        1093,
+        386,
+        1199,
+        490
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "4\nJ",
+      "rect": [
+        1250,
+        386,
+        1356,
+        490
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "5\nK",
+      "rect": [
+        1408,
+        386,
+        1514,
+        490
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "6\nL",
+      "rect": [
+        1566,
+        386,
+        1672,
+        490
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "SKIP",
+      "rect": [
+        1720,
+        386,
+        1826,
+        490
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "REG",
+      "rect": [
+        1876,
+        386,
+        1982,
+        490
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "Z",
+      "rect": [
+        350,
+        541,
+        456,
+        645
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "?\nX",
+      "rect": [
+        506,
+        541,
+        612,
+        645
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "C",
+      "rect": [
+        663,
+        541,
+        769,
+        645
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "=\nV",
+      "rect": [
+        820,
+        541,
+        926,
+        645
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "!\nB",
+      "rect": [
+        977,
+        541,
+        1083,
+        645
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "(\nN",
+      "rect": [
+        1134,
+        541,
+        1240,
+        645
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "7\nM",
+      "rect": [
+        1291,
+        541,
+        1397,
+        645
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "8\n,",
+      "rect": [
+        1448,
+        541,
+        1554,
+        645
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "9\n.",
+      "rect": [
+        1605,
+        541,
+        1711,
+        645
+      ],
+      "blue": false,
+      "shape": null
+    },
+    {
+      "legend": "AUX\nDUP",
+      "rect": [
+        1762,
+        541,
+        1868,
+        645
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "NUMERIC",
+      "rect": [
+        75,
+        542,
+        301,
+        647
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "ALPHA",
+      "rect": [
+        1910,
+        536,
+        2158,
+        643
+      ],
+      "blue": true,
+      "shape": null
+    },
+    {
+      "legend": "ERROR\nRESET",
+      "rect": [
+        75,
+        230,
+        263,
+        493
+      ],
+      "blue": true,
+      "shape": [
+        [
+          75,
+          230
+        ],
+        [
+          220,
+          230
+        ],
+        [
+          220,
+          388
+        ],
+        [
+          263,
+          388
+        ],
+        [
+          263,
+          493
+        ],
+        [
+          75,
+          493
+        ]
+      ]
+    },
+    {
+      "legend": "LEFT\nZERO",
+      "rect": [
+        1982,
+        216,
+        2158,
+        481
+      ],
+      "blue": true,
+      "shape": [
+        [
+          1982,
+          216
+        ],
+        [
+          2158,
+          216
+        ],
+        [
+          2158,
+          481
+        ],
+        [
+          2023,
+          481
+        ],
+        [
+          2023,
+          322
+        ],
+        [
+          1982,
+          322
+        ]
+      ]
+    },
+    {
+      "legend": "SPACE",
+      "rect": [
+        327,
+        699,
+        1890,
+        813
+      ],
+      "blue": true,
+      "shape": null
+    }
+  ]
+}

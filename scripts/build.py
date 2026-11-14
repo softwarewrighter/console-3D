@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('model', choices=['1053', '2741', '5471', 'trs80', 'all'], default='all', nargs='?')
+    p.add_argument('model', choices=['1053', '2741', '5471', 'trs80', 'pcdual', '3279', '029', 'cor24', 'macbook', 'all'], default='all', nargs='?')
     p.add_argument('--device', choices=['CPU', 'OPTIX', 'CUDA', 'METAL'], default='CPU')
     p.add_argument('--timeout', type=int, default=600)
     p.add_argument('--candidate-only', action='store_true', help='Keep current passing output; inspect this candidate with scripts/compare.py before promotion')
@@ -32,8 +32,8 @@ def main():
     env['XETAL_PATH'] = os.pathsep.join([str(ext/'extensions/blender/lib'), str(ROOT)])
     env['XETAL_EXT_LIB_PATH'] = str(binary.parent)
     env['BLENDER_DEVICE'] = a.device
-    for model in (['1053', '2741', '5471', 'trs80'] if a.model == 'all' else [a.model]):
-        stem='trs80' if model=='trs80' else 'ibm'+model
+    for model in (['1053', '2741', '5471', 'trs80', 'pcdual', '3279', '029', 'cor24', 'macbook'] if a.model == 'all' else [a.model]):
+        stem=model if model in ('trs80','pcdual','cor24','macbook') else 'ibm'+model
         work = ROOT/'work'/stem
         work.mkdir(parents=True, exist_ok=True)
         stamp = datetime.now().strftime('%Y%m%d-%H%M%S-%f')
@@ -47,7 +47,7 @@ def main():
         print('Building '+('TRS-80 Model I' if model=='trs80' else 'IBM '+model)+'; log: '+str(candidate/'blender.log'), flush=True)
         with (candidate/'blender.log').open('w') as log:
             subprocess.run(cmd, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=a.timeout)
-        expected = [stem+suffix for suffix in ('.blend','.glb','.obj','.mtl')]+[v+'.png' for v in ('overview','front','left','right','top','detail')]+['report.json']+(['perspective.png','front-perspective.png'] if model=='trs80' else ['mechanism.json'])
+        expected = [stem+suffix for suffix in ('.blend','.glb','.obj','.mtl')]+[v+'.png' for v in ('overview','front','left','right','top','detail')]+['report.json']+(['perspective.png','front-perspective.png'] if model in ('trs80','pcdual','3279','029','cor24','macbook') else ['mechanism.json'])
         for name in expected:
             f = candidate/name
             if not f.is_file() or f.stat().st_size == 0:
@@ -57,7 +57,7 @@ def main():
         report['xetal_extensions_commit'] = subprocess.check_output(['git','rev-parse','HEAD'], cwd=ext, text=True).strip()
         (candidate/'report.json').write_text(json.dumps(report,indent=2)+'\n')
         shutil.copyfile(work/'scene.py',candidate/'generated-scene.py')
-        shutil.copyfile(ROOT/('Trs80.xtl' if model=='trs80' else 'Ibm'+model+'.xtl'),candidate/('Trs80.xtl' if model=='trs80' else 'Ibm'+model+'.xtl'))
+        shutil.copyfile(ROOT/({'trs80':'Trs80.xtl','pcdual':'Pcdual.xtl','cor24':'Cor24.xtl','macbook':'Macbook.xtl'}.get(model,'Ibm'+model+'.xtl')),candidate/({'trs80':'Trs80.xtl','pcdual':'Pcdual.xtl','cor24':'Cor24.xtl','macbook':'Macbook.xtl'}.get(model,'Ibm'+model+'.xtl')))
         if a.candidate_only:
             print('Candidate ready for comparison: '+str(candidate),flush=True)
             continue

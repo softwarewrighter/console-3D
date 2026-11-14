@@ -1,7 +1,7 @@
 'use strict';
 const compact=document.querySelector('#compact'),reference=document.querySelector('#reference');
 const requested=new URLSearchParams(location.search).get('model');
-const model=['2741','5471','trs80'].includes(requested)?requested:'1053';
+const model=['2741','5471','trs80','pcdual'].includes(requested)?requested:'1053';
 const folder=model==='1053'?'comparison':'comparison-'+model;
 const views={overview:'38deg 67deg 1m',front:'0deg 90deg 1m',left:'-40deg 69deg 1m',right:'40deg 69deg 1m',top:'0deg 3deg 1m',rear:'180deg 75deg 1m'};
 let controls,focus=model==='2741',loaded=new Set();
@@ -34,10 +34,20 @@ if(model==='trs80'){
  document.querySelector('.evidence p:not(.eyebrow)').textContent='The complete reference is scaled uniformly to the monitor width. Differences in vertical stacking are preserved, rather than stretching the reference into agreement. Review silhouette, spacing, CRT, keys, and disk enclosure in each view.';
  for(const key of Object.keys(views))views[key]=views[key].replace('1m','1.75m');
 }
-const target=model==='trs80'?'0.035m 0.205m 0.015m':'0m 0.10m 0m';
+if(model==='pcdual'){
+ for(const mv of [compact,reference]){mv.setAttribute('min-camera-orbit','auto 3deg 0.15m');mv.setAttribute('max-camera-orbit','auto 175deg 6m');}
+ document.title='IBM PC dual monitor · Reference comparison';
+ document.querySelector('.comparison-head p:not(.eyebrow)').textContent='Compare the supplied detailed IBM PC workstation with our compact reconstruction. Both use matched cameras. The original photo remains the appearance reference; screen lettering and exact keyboard outlines are later refinement work.';
+ document.querySelector('.study:nth-child(2) h2').textContent='Our compact IBM PC · dual monitor';
+ document.querySelector('#reference-stats').textContent='Supplied GLB · one textured mesh · 285,518 triangles';
+ document.querySelector('#focus').hidden=true;document.querySelector('#full').textContent='Complete reference system';
+ for(const key of Object.keys(views))views[key]=views[key].replace('1m','2.2m');
+ document.querySelector('.evidence p:not(.eyebrow)').innerHTML='Photo and model comparison: <a href="pcdual-three-way.png">original photo / detailed GLB / our compact model</a>. Shapes and component placement take priority over lettering in this pass.';
+}
+const target=model==='pcdual'?'0.215m .22m .04m':model==='trs80'?'0.035m 0.205m 0.015m':'0m 0.10m 0m';
 document.querySelectorAll('a[href^="comparison/"]').forEach(a=>a.href=a.getAttribute('href').replace('comparison/',folder+'/'));
 document.querySelector('.sheets img').src=folder+'/compare-front.png';
-document.querySelector('a[download]').href='reference/'+(model==='1053'?'ibm1130-superset-reference.glb':(model==='trs80'?'trs80-reference.glb':'ibm'+model+'-reference.glb'));
+document.querySelector('a[download]').href='reference/'+(model==='1053'?'ibm1130-superset-reference.glb':(model==='pcdual'?'ibmpc-dual-reference.glb':model==='trs80'?'trs80-reference.glb':'ibm'+model+'-reference.glb'));
 function synchronize(from,to){
  const o=from.getCameraOrbit(),t=from.getCameraTarget();
  const ratio=focus||model!=='1053'?1:1.65;
@@ -52,7 +62,7 @@ function view(name){
 }
 function mode(isFocus){
  focus=isFocus||model==='2741';reference.src=folder+'/'+(focus&&model!=='2741'?'reference-region.glb':'reference-aligned.glb');
- document.querySelector('#reference-title').textContent=model==='trs80'?'Supplied reference · complete TRS-80 Model I':model==='2741'?'Supplied reference · complete IBM 2741':model==='5471'?(focus?'Reference · underside artifacts excluded':'Supplied reference · underside artifacts retained'):focus?'Reference · diagnostic printer region':'Supplied reference · full console';
+ document.querySelector('#reference-title').textContent=model==='pcdual'?'Supplied reference · dual-monitor IBM PC':model==='trs80'?'Supplied reference · complete TRS-80 Model I':model==='2741'?'Supplied reference · complete IBM 2741':model==='5471'?(focus?'Reference · underside artifacts excluded':'Supplied reference · underside artifacts retained'):focus?'Reference · diagnostic printer region':'Supplied reference · full console';
  document.querySelector('#full').classList.toggle('active',!focus||model==='2741');document.querySelector('#focus').classList.toggle('active',focus);
  view('overview');
 }
@@ -67,6 +77,6 @@ customElements.whenDefined('model-viewer').then(()=>{
  document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
  document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{controls.actions[b.dataset.action]();compact.jumpCameraToGoal();synchronize(compact,reference);});
  document.querySelector('#full').onclick=()=>mode(false);document.querySelector('#focus').onclick=()=>mode(true);
- compact.src=`${model}/${model==='trs80'?'trs80':'ibm'+model}.glb`;mode(false);
+ compact.src=`${model}/${['trs80','pcdual'].includes(model)?model:'ibm'+model}.glb`;mode(false);
  fetch(`${model}/report.json`).then(r=>r.json()).then(r=>document.querySelector('#compact-stats').textContent=`${r.mesh_count} meshes · ${r.triangle_count?.toLocaleString()||'see report'} triangles · ${r.glb_bytes?(r.glb_bytes/1024).toFixed(0)+' KiB':'see report for size'}`);
 });

@@ -1,0 +1,4 @@
+"bp:" u_se< "Bpy"
+l:s_cene := { z ->
+  (bp:p_iece "COR24 TB development board") c_at "build_cor24()\nfinish('cor24')\n"
+}

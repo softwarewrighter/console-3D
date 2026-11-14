@@ -5,3 +5,18 @@ __pycache__/
 
 # User-supplied dense TRS-80 reference stays local.
 /references/trs80-reference.glb
+
+# Supplied dense IBM PC reference stays local.
+/references/ibmpc-dual-reference.glb
+
+# Supplied dense IBM 3279 reference stays local.
+/references/ibm3279-reference.glb
+
+# Supplied IBM 029 planning reference stays local.
+/references/ibm029-reference.glb
+
+# Supplied COR24-TB reconstruction stays local.
+/references/cor24-reference.glb
+
+# Supplied MacBook reconstruction stays local.
+/references/macbook-reference.glb

@@ -62,6 +62,7 @@ def render(source, tag, aligned=False, region=False):
     results={}
     for view, loc in cfg['views'].items():
         data=bpy.data.cameras.new(view);data.type='ORTHO';data.ortho_scale=cfg['orthographic_scale']
+        if view in cfg.get('perspective_views',[]):data.type='PERSP';data.lens=cfg.get('perspective_lens_mm',50);data.sensor_width=36
         cam=bpy.data.objects.new('camera '+view,data);scene.collection.objects.link(cam);cam.location=loc
         cam.rotation_euler=(Vector(cfg['aim'])-cam.location).to_track_quat('-Z','Y').to_euler();scene.camera=cam
         scene.render.image_settings.file_format='PNG';scene.render.filepath=str(out/(tag+'-'+view+'.png'))

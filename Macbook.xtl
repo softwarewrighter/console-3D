@@ -1,0 +1,4 @@
+"bp:" u_se< "Bpy"
+l:s_cene := { z ->
+  (bp:p_iece "MacBook Pro M1 Max") c_at "build_macbook()\nfinish('macbook')\n"
+}
