@@ -1,11 +1,13 @@
-# Console Studies — IBM Selectric & TRS-80
+# Procedural Equipment Studies — Consoles, Computers & Electronics
 
 **Three machines. One remarkable mechanism.** Compact procedural models of the
 **IBM 1053 console (used on IBM 1130/1800 systems)**, **IBM 2741 APL terminal**, and **IBM 5471 System/3
 printer-keyboard**, built around shared Selectric construction helpers. A fourth
 study reconstructs the **TRS-80 Model I** keyboard/CPU, expansion interface,
 CRT monitor, and upright mini-disk drive. A fifth study adds an **IBM PC with two
-green CRT monitors**, dual disk drives, and a detached keyboard.
+green CRT monitors**, dual disk drives, and a detached keyboard. Four further
+studies cover the **IBM 3279 graphics terminal**, **IBM 029 keypunch**,
+**COR24-TB development board**, and **MacBook Pro M1 Max**.
 
 The models are authored through X_eTaL's Blender extension and detailed Python
 construction helpers. They export Blender, glTF, OBJ, and matched validation
@@ -16,7 +18,8 @@ paired comparison viewers for the supplied dense reference GLBs.
 
 Four additional procedural studies—IBM 3279, IBM 029, COR24-TB and MacBook Pro—
 have a separate local index at `/new-models.html` on the preview server. These
-are first-pass candidates; see [build commands, provenance and limitations](docs/equipment-previews.md).
+are candidates under refinement; the 029 has received additional photo-based
+corrections. See [build commands, provenance and limitations](docs/equipment-previews.md).
 
 ## View the models on GitHub
 
@@ -28,6 +31,10 @@ The Blender renders below can be viewed directly on GitHub:
 - [IBM 1053 render](images/ibm1053-render.png)
 - [IBM 2741 render](images/ibm2741-render.png)
 - [IBM 5471 render](images/ibm5471-render.png)
+- [IBM 3279 render](images/ibm3279-render.png)
+- [IBM 029 render](images/ibm029-render.png)
+- [COR24-TB render](images/cor24-render.png)
+- [MacBook Pro render](images/macbook-render.png)
 
 A public interactive demo is not deployed. The interactive viewer and comparison
 pages run from generated build output; GitHub's repository view displays their
@@ -35,9 +42,11 @@ source rather than running them.
 
 ## Run the interactive preview locally
 
-After building the models, start the preview server:
+After building the models, assemble the additional equipment pages and start
+the preview server:
 
 ```sh
+python3 scripts/publish_equipment_previews.py
 just view-serve     # assemble and serve existing output on port 5803
 just view          # open the configured interactive Chromium window
 ```
@@ -45,9 +54,15 @@ just view          # open the configured interactive Chromium window
 Open these paths on your preview server:
 
 ```text
-http://localhost:5803/                         All five models
+http://localhost:5803/                         Five console/computer models
 http://localhost:5803/?model=pcdual            Dual-monitor IBM PC
 http://localhost:5803/?model=trs80             TRS-80 Model I
+http://localhost:5803/new-models.html          Four additional equipment studies
+http://localhost:5803/equipment.html?model=3279    IBM 3279
+http://localhost:5803/equipment.html?model=029     IBM 029
+http://localhost:5803/equipment.html?model=cor24   COR24-TB
+http://localhost:5803/equipment.html?model=macbook MacBook Pro
+http://localhost:5803/029-comparison/          029 photo / old / corrected model
 http://localhost:5803/compare.html             IBM 1053 comparison
 http://localhost:5803/compare.html?model=2741  IBM 2741 comparison
 http://localhost:5803/compare.html?model=5471  IBM 5471 comparison
@@ -85,6 +100,9 @@ await selectric.carriageReturn();
 
 ## Current models
 
+The five established studies and four candidate studies are shown below.
+Candidate geometry and dimensions remain provisional.
+
 | Model | Production meshes | Triangles | GLB | Principal evidence |
 |---|---:|---:|---:|---|
 | IBM 1053 / 1131 installation | 33 | 12,598 | 604 KiB | Two original console photographs and supplied full-console GLB |
@@ -92,6 +110,13 @@ await selectric.carriageReturn();
 | IBM 5471 System/3 console | 14 | 11,816 | 561 KiB | Supplied GLB plus IBM Components Reference Figures 8-1 and 8-2 |
 | TRS-80 Model I system | 34 | 14,862 | 695 KiB | Supplied photograph and dense GLB, Museums Victoria component dimensions |
 | IBM PC / dual CRT workstation | 27 | 25,024 | 1,098 KiB | Supplied photo and local dense GLB; provisional 5150-style envelope |
+
+| IBM 3279 graphics terminal (candidate) | 20 | 6,806 | 337 KiB | Supplied photograph and dense GLB; provisional dimensions |
+| IBM 029 keypunch (candidate) | 33 | 17,304 | 768 KiB | Columbia photographs/manual scans and supplied dense GLB |
+| COR24-TB development board (candidate) | 17 | 4,498 | 394 KiB | Supplied board photograph and dense GLB; inferred dimensions |
+| MacBook Pro M1 Max (candidate) | 10 | 2,678 | 196 KiB | Supplied photograph and dense GLB; provisional 16-inch envelope |
+
+Candidate counts describe the pictured builds; generated reports record each revision.
 
 ### IBM 1053
 
@@ -165,6 +190,45 @@ remains untracked. Exact lettering is deferred by request. Keyboard outlines,
 monitor angle/offset and unseen fittings remain provisional.
 See [PC evidence and comparison notes](docs/pcdual.md).
 
+### IBM 3279 graphics terminal (candidate)
+
+![Our procedural Blender render of the IBM 3279 terminal and detached keyboard](images/ibm3279-render.png)
+
+A deep beige cabinet surrounds a dark rounded bezel and curved color screen,
+with controls, vents, pedestal, and separate keyboard. Screen graphics are
+reconstructed artwork. Scale, keyboard proportions, and rear fittings remain
+provisional.
+
+### IBM 029 keypunch (candidate)
+
+![Our corrected procedural Blender render of the IBM 029 keypunch desk](images/ibm029-render.png)
+
+The corrected study includes separate card hoppers, an open card route, a raked
+program window, and a detached keyboard pod with a lower, backward-sloping switch
+panel. A shallow rear cabinet leaves three quarters of the nominal tabletop depth
+open below for the operator's legs; a visible gap separates the keyboard and main
+housing. These clearances are modeling choices based on the photographs, not
+verified factory measurements. See [029 evidence and refinement plan](docs/029-plan.md).
+The local `/029-comparison/` page compares photographs, the earlier model, and
+this corrected model using fixed cameras.
+
+### COR24-TB development board (candidate)
+
+![Our procedural Blender render of the COR24-TB development board](images/cor24-render.png)
+
+The board includes FPGA and SRAM packages, leads, USB connector, switches,
+passives, headers, and reconstructed silkscreen and trace artwork. Board dimensions
+are inferred; the trace artwork is an appearance study, not manufacturing data.
+
+### MacBook Pro M1 Max (candidate)
+
+![Our procedural Blender render of an open MacBook Pro M1 Max](images/macbook-render.png)
+
+The laptop study includes a rounded metal base, display, hinge, keyboard,
+trackpad, speaker grilles, and ports. The 16-inch envelope, exact variant, lid
+angle, port layout, and lettering remain provisional. See [equipment build and
+validation notes](docs/equipment-previews.md) for all four candidate studies.
+
 Physical shell dimensions, some small details, and unseen rear fittings remain
 provisional. Dense reconstructions are comparison aids rather than measurement
 authorities. See [reference provenance](references/README.md) and
@@ -178,13 +242,16 @@ if that checkout is elsewhere.
 
 ```sh
 just setup          # local ./X_eTaL-extensions and its pinned X_eTaL runtime
-just render-gpu     # all five models with OptiX
-just render         # all five models with CPU
+just render-gpu     # all nine models with OptiX
+just render         # all nine models with CPU
 just render-1053
 just render-trs80
 just render-pcdual
 just render-2741
 just render-5471
+python3 scripts/build.py 029 --device OPTIX --candidate-only
+# Other candidate IDs: 3279, cor24, macbook
+python3 scripts/publish_equipment_previews.py
 just viewer         # rebuild preview from existing passing outputs
 ```
 
@@ -202,7 +269,8 @@ python3 scripts/build.py 2741 --device CUDA --timeout 900
 remaining geometry labels. Printed textures are committed; optional regeneration
 uses `uv run scripts/make_decals.py` and the documented GNU FreeFont files.
 
-Each `work/ibmMODEL/out/` contains the `.blend`, `.glb`, `.obj`/`.mtl`, six PNG
+Established outputs live in `work/ibmMODEL/out/`; additional equipment candidates
+live in `work/<stem>/candidate-TIMESTAMP/`. Each build directory contains the `.blend`, `.glb`, `.obj`/`.mtl`, six PNG
 views, generation/Blender logs, and `report.json`. Reports include physical-model
 bounds, logical parts, meshes, triangles, draw calls, bytes, and GLB round-trip
 checks. `work/preview/` contains the assembled inspection pages and downloads.
@@ -244,7 +312,10 @@ transparency, and reconstruction errors affect them.
   controls, materials, compaction, rendering, and GLB validation.
 - `models/*-keyboard.json`, `textures/` — keyboard layouts and small print atlases.
 - `scripts/build.py`, `compare.py`, `accept_candidate.py` — build/review/promotion.
+- `scripts/keypunch_scene.py`, `equipment_scene.py` — 029 and other candidate geometry.
 - `web/`, `scripts/make_preview.py` — five-model and paired-reference viewers.
+- `scripts/publish_equipment_previews.py` — four-candidate index and equipment viewers.
+- `scripts/make_029_comparison.py` — photo / earlier / corrected 029 comparison.
 - `scripts/check_preview.py`, `check_comparison.py` — real browser loading,
   controls, synchronized rotation, mobile layout, and console checks.
 
